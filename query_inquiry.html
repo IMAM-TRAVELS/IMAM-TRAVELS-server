@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Inquiry - Ticket Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="query_inquiry.css">
+</head>
+<body>
+
+    <header class="company-header">
+    <a href="ticket.html" class="header-link">
+        <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo">
+        <span class="company-name">Imam Travel and Tours</span>
+    </a>
+</header>
+
+    <div class="top-nav">
+        <div class="nav-left">
+            <a href="ticket.html"><button>Ticket Service</button></a>
+            <a href="service.html"><button>Visa Service</button></a>
+            <a href="accounts.html"><button>Accounts</button></a>
+            <a href="user.html"><button>User</button></a>
+        </div>
+        <div class="nav-right">
+            <span>Quick links <i class="fa fa-caret-down"></i></span>
+            <span>Configuration</span>
+            <span>Change password</span>
+            <span><i class="fa fa-key"></i> Logout</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div id="ticketSidebar">
+                <div class="menu-group">
+                    <button class="menu-head active" onclick="toggleMenu('trans')">Transactions <i class="fas fa-caret-down"></i></button>
+                    <div id="trans" class="menu-content show">
+                        <a href="Contact_Book_Inquiry.html"><button class="sub-link">Contact Book</button></a>
+                        <a href="query_inquiry.html"><button class="sub-link">Query Inquiry</button></a>
+                        <button class="sub-link">Temporary Booking</button>
+                        <button class="sub-link">Ticket Booking</button>
+                        <button class="sub-link">Ticket Inquiry</button>
+                        <button class="sub-link">Service Inquiry</button>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('inq')">Inquiries and Reports <i class="fas fa-caret-down"></i></button>
+                    <div id="inq" class="menu-content">
+                        <button class="sub-link">Customer Invoices Inquiry</button>
+                        <button class="sub-link">Customer Allocate Inquiry</button>
+                        <button class="sub-link">Customer And Sales Reports</button>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('maint')">Maintenance <i class="fas fa-caret-down"></i></button>
+                    <div id="maint" class="menu-content">
+                        <button class="sub-link">Add And Manage Customer</button>
+                        <button class="sub-link">Customer Branches</button>
+                        <button class="sub-link">Call Type</button>
+                        <button class="sub-link">Query Status</button>
+                        <button class="sub-link">Query Source</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="page-title">Query Inquiry</h2>
+
+            <div class="status-tabs">
+                <button class="btn-red"><i class="fa fa-thumbs-up"></i> Active(0)</button>
+                <button class="btn-darkblue"><i class="fa fa-warning"></i> Processing(0)</button>
+                <button class="btn-green"><i class="fa fa-pause"></i> Done(7)</button>
+                <button class="btn-light"><i class="fa fa-list"></i> ALL(7)</button>
+            </div>
+
+            <div class="action-bar">
+                <a href="add_new_contect.html"><button class="btn-blue-outline"><i class="fa fa-book"></i> CONTACT BOOK</button></a>
+                <a href="add_new_query.html"><button class="btn-blue-solid"><i class="fa fa-bullhorn"></i> QUERY</button></a>
+                <button class="btn-green-solid"><i class="fa fa-calendar"></i> VIEW CALENDAR</button>
+            </div>
+
+            <div class="filter-section">
+                <span>From: <input type="text" value="13/03/2021"></span>
+                <span>To: <input type="text" value="21/04/2026"></span>
+                <span>Source: 
+                    <select><option>All Source</option></select>
+                </span>
+                <span>User: 
+                    <select><option>All Users</option></select>
+                </span>
+                <button class="btn-search"><i class="fa fa-check"></i> Search</button>
+                <div class="name-mobile-filters">
+                    <span>Name: <input type="text"></span>
+                    <span>Mobile: <input type="text"></span>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>UPDATE</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                            <th>Resource</th>
+                            <th>Q.Type</th>
+                            <th>Name</th>
+                            <th>Mobile</th>
+                            <th>Whatsapp</th>
+                            <th>Email</th>
+                            <th>Remark</th>
+                            <th>Forwarded To</th>
+                            <th>Assign By</th>
+                            <th>Follow up</th>
+                            <th>Create Order</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><button class="btn-update">UPDATE</button></td>
+                            <td><select><option>Done</option></select></td>
+                            <td>03-Jul-2025</td>
+                            <td>BILAL</td>
+                            <td>ARRANGE A CALL BACK</td>
+                            <td>BILAL</td>
+                            <td>03041098565</td>
+                            <td>03041098565</td>
+                            <td></td>
+                            <td><textarea>1 CHILD 2 ADULTS...</textarea></td>
+                            <td>HASEEB RAZA</td>
+                            <td>UMAR NAZIR</td>
+                            <td><input type="checkbox"></td>
+                            <td><i class="fa fa-file-invoice"></i></td>
+                        </tr>
+                        </tbody>
+                </table>
+                <div class="table-footer">
+                    <span>Records 1-7 of 7</span>
+                    <span class="pagination">First Prev Next Last</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bar">
+        21/04/2026 | 15:44
+    </div>
+</body>
+</html>

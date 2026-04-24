@@ -1,0 +1,236 @@
+/* Header Link Styles */
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Underline khatam karne ke liye */
+    color: inherit; /* Text color wahi rakhega jo pehle tha */
+}
+
+.header-link:hover {
+    opacity: 0.8; /* Click karte waqt thoda sa effect dene ke liye */
+}
+
+.company-header {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #2B99B9;
+}
+
+.company-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B7B9E;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Main Page Styles */
+.dashboard {
+    padding: 20px;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.page-header {
+    background: #fff;
+    padding: 12px 20px;
+    border-left: 5px solid #15617D;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.page-header h2 {
+    font-size: 18px;
+    color: #15617D;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Section Containers */
+.search-section {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.search-section h3 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Grid System for Inputs */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #444;
+    text-transform: uppercase;
+}
+
+.filter-group input, 
+.filter-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.filter-group input:focus, 
+.filter-group select:focus {
+    border-color: #15617D;
+}
+
+/* Buttons */
+.btn-search-main {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #15617D; /* Default Search Blue */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+.btn-search-main:hover {
+    opacity: 0.9;
+}
+
+/* Table Design */
+.table-container {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #15617D;
+    color: white;
+}
+
+th {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 13px;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Status Badge */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* --- PROFESSIONAL RESPONSIVE DESIGN --- */
+
+/* 1. Mobile & Tablets (Large Screens ke liye optimization) */
+@media screen and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
+    }
+}
+
+/* 2. Tablets (Medium Screens) */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-left, .nav-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 3. Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .company-name {
+        font-size: 18px;
+    }
+}
+
+/* 4. Professional Touch: Image & Table fix */
+img, table {
+    max-width: 100%;
+    height: auto;
+}

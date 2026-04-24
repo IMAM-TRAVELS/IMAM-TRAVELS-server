@@ -1,0 +1,274 @@
+/* Header Link Styles */
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Underline khatam karne ke liye */
+    color: inherit; /* Text color wahi rakhega jo pehle tha */
+}
+
+.header-link:hover {
+    opacity: 0.8; /* Click karte waqt thoda sa effect dene ke liye */
+}
+
+.company-header {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #2B99B9;
+}
+
+.company-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B7B9E;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+/* Contact Book Inquiry Specific Styles */
+
+.page-header {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-bottom: 2px solid #2B99B9;
+    margin-bottom: 20px;
+}
+
+.page-header h2 {
+    font-size: 18px;
+    color: #15617D;
+}
+
+.search-section {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.input-group input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    width: 250px;
+}
+
+.btn-search {
+    background: #2B99B9;
+    color: white;
+    border: none;
+    padding: 6px 15px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-search:hover {
+    background: #1B7B9E;
+}
+
+/* Table Design matching your UI */
+.table-container {
+    background: white;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+table th {
+    background: #15617D;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+table td {
+    padding: 8px 10px;
+    border: 1px solid #eee;
+}
+
+table tr:nth-child(even) {
+    background: #f2f7f9;
+}
+
+table tr:hover {
+    background: #e9f3f7;
+}
+
+.sub-link.active {
+    background: #15617D !important;
+    font-weight: bold;
+}
+
+/* Search Section Container */
+.search-section {
+    background: #fdfdfd;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Top Buttons Layout */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.btn-action {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 6px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    color: #333;
+    border-radius: 3px;
+}
+
+.btn-action.active {
+    background: #2B99B9;
+    color: white;
+    border-color: #217d99;
+}
+
+/* Filter Grid Layout (6 columns + Search button) */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filter-group label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #555;
+    text-transform: uppercase;
+}
+
+.filter-group input, 
+.filter-group select {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 12px;
+    outline: none;
+}
+
+.filter-group input:focus {
+    border-color: #2B99B9;
+}
+
+/* Search Button Style */
+.btn-search-main {
+    background: #28a745; /* Green color as per standard search */
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-search-main:hover {
+    background: #218838;
+}
+
+.search-btn-container {
+    min-width: 120px;
+}
+
+/* --- PROFESSIONAL RESPONSIVE DESIGN --- */
+
+/* 1. Mobile & Tablets (Large Screens ke liye optimization) */
+@media screen and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr) !important; /* 4 ki bajaye 3 icons */
+        gap: 15px;
+    }
+}
+
+/* 2. Tablets (Medium Screens) */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Sidebar upar aur dashboard niche aa jayega */
+    }
+    
+    .sidebar {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr) !important; /* Mobile par 2 icons */
+    }
+
+    .top-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-left, .nav-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 3. Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr) !important; /* Bilkul choti screen par 1 icon */
+    }
+
+    .company-name {
+        font-size: 18px;
+    }
+}
+
+/* 4. Professional Touch: Image & Table fix */
+img, table {
+    max-width: 100%;
+    height: auto;
+}

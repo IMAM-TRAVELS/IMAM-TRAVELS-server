@@ -1,0 +1,255 @@
+/* Header Link Styles */
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Underline khatam karne ke liye */
+    color: inherit; /* Text color wahi rakhega jo pehle tha */
+}
+
+.header-link:hover {
+    opacity: 0.8; /* Click karte waqt thoda sa effect dene ke liye */
+}
+
+.company-header {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #2B99B9;
+}
+
+.company-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B7B9E;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    font-size: 12px;
+    background-color: #f0f4f7;
+}
+
+/* Top Navbar */
+.top-nav {
+    background-color: #008ebc;
+    color: white;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-right: 1px solid #00a8de;
+}
+
+.nav-item.active {
+    background-color: #005f7d;
+}
+
+.nav-right span {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.main-container {
+    display: flex;
+    height: calc(100vh - 60px);
+}
+
+.sidebar {
+    width: 150px;
+    background-color: #008ebc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-btn, .sidebar-dropdown {
+    background-color: #00a8de;
+    border: 1px solid #fff;
+    color: white;
+    text-align: left;
+    padding: 8px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.sidebar-btn.active-btn {
+    background-color: #005f7d;
+}
+
+/* Content Area */
+.content {
+    flex-grow: 1;
+    padding: 10px;
+    background: white;
+    overflow-y: auto;
+}
+
+.page-title {
+    color: #005f7d;
+    font-size: 16px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+/* Tabs and Buttons */
+.status-tabs {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.status-tabs button {
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 4px;
+    margin: 0 2px;
+}
+
+.btn-red { background: red; }
+.btn-darkblue { background: #000066; }
+.btn-green { background: #28a745; }
+.btn-light { background: #fff; color: blue !important; border: 1px solid blue !important; }
+
+.action-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.btn-blue-outline { background: #fff; color: #008ebc; border: 2px solid #008ebc; padding: 5px 15px; font-weight: bold; }
+.btn-blue-solid { background: #337ab7; color: white; border: none; padding: 7px 20px; }
+.btn-green-solid { background: #5cb85c; color: white; border: none; padding: 7px 20px; }
+
+/* Filter Section */
+.filter-section {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 2.5;
+}
+
+.btn-search { background: #00c0ef; color: white; border: none; padding: 3px 10px; border-radius: 5px; }
+
+/* Table Styling */
+.table-wrapper {
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+th {
+    background-color: #778899;
+    color: white;
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-transform: uppercase;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+    background: #fff;
+}
+
+.btn-update {
+    background: #337ab7;
+    color: white;
+    border: none;
+    font-size: 10px;
+    padding: 2px 5px;
+}
+
+textarea { width: 100%; height: 40px; font-size: 10px; }
+
+/* Footer */
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #e7eff7;
+    padding: 5px;
+    font-size: 11px;
+    border-top: 1px solid #ccc;
+}
+
+/* --- PROFESSIONAL RESPONSIVE DESIGN --- */
+
+/* 1. Mobile & Tablets (Large Screens ke liye optimization) */
+@media screen and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 15px;
+    }
+}
+
+/* 2. Tablets (Medium Screens) */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-left, .nav-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 3. Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .company-name {
+        font-size: 18px;
+    }
+}
+
+/* 4. Professional Touch: Image & Table fix */
+img, table {
+    max-width: 100%;
+    height: auto;
+}

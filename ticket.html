@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency Company</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="ticket.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <header class="company-header">
+        <a href="ticket.html" class="header-link">
+            <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo">
+            <span class="company-name">Imam Travel and Tours</span>
+        </a>
+    </header>
+
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="ticket.html"><button class="active">Ticket Service</button></a>
+            
+            <a href="service.html"><button>Visa Service</button></a>
+            
+            <a href="accounts.html"><button>Accounts</button></a>
+            
+            <a href="user.html"><button>User</button></a>
+        </div>
+        <div class="nav-right">
+            <span>Quick links <i class="fas fa-caret-down"></i></span>
+            <span>Configuration</span>
+            <span>Change password</span>
+            <span class="logout"><i class="fas fa-key"></i> Logout</span>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div id="ticketSidebar">
+                <div class="menu-group">
+                    <button class="menu-head active" onclick="toggleMenu('trans')">Transactions <i class="fas fa-caret-down"></i></button>
+                    <div id="trans" class="menu-content show">
+                        <a href="Contact_Book_Inquiry.html"><button class="sub-link">Contact Book</button></a>
+                        <a href="query_inquiry.html"><button class="sub-link">Query Inquiry</button></a>
+                        <button class="sub-link">Temporary Booking</button>
+                        <button class="sub-link">Ticket Booking</button>
+                        <button class="sub-link">Ticket Inquiry</button>
+                        <button class="sub-link">Service Inquiry</button>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('inq')">Inquiries and Reports <i class="fas fa-caret-down"></i></button>
+                    <div id="inq" class="menu-content">
+                        <button class="sub-link">Customer Invoices Inquiry</button>
+                        <button class="sub-link">Customer Allocate Inquiry</button>
+                        <button class="sub-link">Customer And Sales Reports</button>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('maint')">Maintenance <i class="fas fa-caret-down"></i></button>
+                    <div id="maint" class="menu-content">
+                        <button class="sub-link">Add And Manage Customer</button>
+                        <button class="sub-link">Customer Branches</button>
+                        <button class="sub-link">Call Type</button>
+                        <button class="sub-link">Query Status</button>
+                        <button class="sub-link">Query Source</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="dashboard">
+            <div class="tabs">
+                <button class="tab active">Home</button>
+                <button class="tab">Dashboard</button>
+                <button class="tab">To Do</button>
+            </div>
+
+            <div class="grid-container">
+                <div class="item" id="companyProfileItem">
+                    <i class="fas fa-th-large text-orange"></i>
+                    <span>Company Profile</span>
+                </div>
+    
+                <div class="item" id="userAccountsItem">
+                    <i class="fas fa-user-circle text-blue"></i>
+                    <span>User Accounts</span>
+                </div>
+    
+                <div class="item" id="changePasswordItem">
+                    <i class="fas fa-lock text-green"></i>
+                    <span>Change Password</span>
+                </div>
+                
+                <div class="item" id="banksItem">
+                    <i class="fas fa-university text-gray"></i>
+                    <span>Banks</span>
+                </div>
+
+                <div class="item" id="suppliersItem">
+                    <i class="fas fa-truck text-gray"></i>
+                    <span>Suppliers</span>
+                </div>
+
+                <div class="item" id="customersItem">
+                    <i class="fas fa-users text-brown"></i>
+                    <span>Customers</span>
+                </div>
+
+                <div class="item" id="employeesItem">
+                    <i class="fas fa-user-tie text-red"></i>
+                    <span>Employees</span>
+                </div>
+
+                <div class="item" id="categoryItem">
+                    <i class="fas fa-layer-group text-yellow"></i>
+                    <span>Category</span>
+                </div>
+
+                <div class="item" id="itemsItem">
+                    <i class="fas fa-box text-orange"></i>
+                    <span>Items</span>
+                </div>
+                
+                <div class="item" id="measureItem">
+                    <i class="fas fa-ruler-combined text-cyan"></i>
+                    <span>Measure</span>
+                </div>
+
+                <div class="item" id="brandsItem">
+                    <i class="fas fa-tag text-orange"></i>
+                    <span>Brands</span>
+                </div>
+
+                <div class="item" id="searchRateItem">
+                    <i class="fas fa-chart-line text-red"></i>
+                    <span>Search Rate</span>
+                </div>
+
+                <div class="item" id="servicesItem">
+                    <i class="fas fa-concierge-bell text-blue"></i>
+                    <span>Services</span>
+                </div>
+
+                <div class="item"  id="chartOfAccountsItem">
+                    <i class="fas fa-sitemap text-blue"></i>
+                    <span>Chart of Accounts</span>
+                </div>
+
+                <div class="item" id="expenseAccountsItem">
+                    <i class="fas fa-file-invoice-dollar text-teal"></i>
+                    <span>Expense Accounts</span>
+                </div>
+
+                <div class="item" id="miscSettingsItem">
+                    <i class="fas fa-cog text-orange"></i>
+                    <span>Misc.Settings</span>
+                </div>
+
+                <div class="item" id="shortcutsLinksItem">
+                    <i class="fas fa-link text-cyan"></i>
+                    <span>Shortcuts Links</span>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div id="clock">18/04/2026 | 17:01</div>
+        <div class="badge">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

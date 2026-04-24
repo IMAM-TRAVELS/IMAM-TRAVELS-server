@@ -1,0 +1,305 @@
+/* Header Link Styles */
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Underline khatam karne ke liye */
+    color: inherit; /* Text color wahi rakhega jo pehle tha */
+}
+
+.header-link:hover {
+    opacity: 0.8; /* Click karte waqt thoda sa effect dene ke liye */
+}
+
+.company-header {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #2B99B9;
+}
+
+.company-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B7B9E;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+:root {
+    --primary-blue: #3498db;
+    --dark-blue: #1a74ad;
+    --sidebar-bg: #008CBA;
+    --border-color: #ccc;
+    --header-grey: #85929e;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    font-size: 13px;
+}
+
+/* Header Navigation */
+.top-nav {
+    background-color: var(--primary-blue);
+    display: flex;
+    padding: 0 10px;
+}
+
+.nav-btn {
+    background: none;
+    border: 1px solid #ffffff44;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    background-color: #1a74ad;
+}
+
+/* Info Bar */
+.info-bar {
+    background: #f8f9fa;
+    padding: 5px 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #2c3e50;
+}
+
+.quick-links span {
+    margin-left: 15px;
+    color: #0056b3;
+    cursor: pointer;
+}
+
+/* Layout */
+.main-layout {
+    display: flex;
+    min-height: 80vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 200px;
+    background-color: var(--sidebar-bg);
+    color: white;
+}
+
+.menu-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ffffff33;
+    cursor: pointer;
+}
+
+.menu-item.active {
+    background-color: #007196;
+    font-weight: bold;
+}
+
+.sub-menu a {
+    display: block;
+    padding: 8px 25px;
+    color: white;
+    text-decoration: none;
+    background: #0099cc;
+    font-size: 12px;
+}
+
+.sub-menu a.active-sub {
+    background-color: #61b3de;
+}
+
+/* Main Content Area */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.page-title {
+    font-weight: bold;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.form-container {
+    background: white;
+    border: 1px solid var(--border-color);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+}
+
+.form-section {
+    border: 1px solid #dee2e6;
+    margin: 10px;
+}
+
+.section-header {
+    background-color: var(--header-grey);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+}
+
+/* Rows and Inputs */
+.row {
+    display: flex;
+    padding: 8px 15px;
+    align-items: center;
+}
+
+.row label {
+    width: 150px;
+    font-size: 12px;
+}
+
+.blue-label {
+    color: blue;
+}
+
+.row input, .row select, .row textarea {
+    flex: 1;
+    padding: 4px;
+    border: 1px solid #777;
+    border-radius: 2px;
+}
+
+.input-group {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.input-group i {
+    margin-left: 5px;
+    font-size: 18px;
+}
+
+/* Buttons */
+.form-footer {
+    text-align: center;
+    padding: 20px;
+}
+
+.link-blue {
+    display: block;
+    color: blue;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+
+.btn-add {
+    background-color: #3498db;
+    color: white;
+    border: 1px solid #2980b9;
+    padding: 6px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-back {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 8px 25px;
+    border-radius: 4px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Footer */
+.bottom-footer {
+    background: #e9ecef;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.version-badge {
+    background: #46b8da;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* --- PROFESSIONAL RESPONSIVE DESIGN --- */
+
+/* 1. Mobile & Tablets (Large Screens ke liye optimization) */
+@media screen and (max-width: 1024px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 2. Tablets (Medium Screens) */
+@media screen and (max-width: 768px) {
+    .main-layout, .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .row label {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 3. Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    .company-name {
+        font-size: 18px;
+    }
+}
+
+/* 4. Professional Touch: Image & Table fix */
+img, table {
+    max-width: 100%;
+    height: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+}
