@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Imam Travel and Tours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="user_accounts.css">
+    <link rel="icon" class="logo-circle" type="image/x-icon" href="imam_travel_and_tours_logo.jpeg">
+</head>
+<body>
+
+    <header class="company-header">
+        <a href="ticket.html" class="header-link">
+            <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo">
+            <span class="company-name">Imam Travel and Tours</span>
+        </a>
+    </header>
+
+    <div class="user-container">
+        <header class="user-header">
+            <h2><i class="fas fa-users-cog"></i> User Management</h2>
+            <div class="action-group">
+                <button id="loadDataBtn" class="show-data-btn"><i class="fas fa-sync-alt"></i> Show Live Data</button>
+                <button class="add-btn" onclick="openAddModal()">
+                    <i class="fas fa-user-plus"></i> Add New User
+                </button>
+                
+                <div id="addUserModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-user-plus"></i> Add New User</h3>
+                            <span class="close-modal" onclick="closeAddModal()">&times;</span>
+                        </div>
+                        <form id="addUserForm">
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" id="add_username" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" id="add_email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Company ID</label>
+                                <input type="text" id="add_companyid" required>
+                            </div>
+                            <div class="form-group">
+                                <label>System Role</label>
+                                <select id="add_role">
+                                    <option value="admins">ADMIN</option>
+                                    <option value="workers" selected>WORKER</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-cancel" onclick="closeAddModal()">Cancel</button>
+                                <button type="submit" class="btn-save">Create User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="user-table-wrapper">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>User Details</th>
+                        <th>Email Address</th>
+                        <th>Company Id</th>
+                        <th>System Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <tr><td colspan="5" style="text-align:center; padding:20px;">Click "Show Live Data" to view users.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-edit"></i> Edit User Account</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="editUserForm">
+                <input type="hidden" id="edit_user_path"> <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="edit_username">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="edit_email">
+                </div>
+                <div class="form-group">
+                    <label>Company ID</label>
+                    <input type="text" id="edit_companyid">
+                </div>
+                <div class="form-group">
+                    <label>System Role</label>
+                    <select id="edit_role">
+                        <option value="admins">ADMIN</option>
+                        <option value="workers">WORKER</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Forget Password</label>
+                    <input type="text" id="edit_password" placeholder="Enter new password to reset">                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: white;
+    padding-bottom: 80px;
+}
+
+.form-container {
+    padding: 10px;
+}
+
+/* Two Column Layout */
+.sections-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.form-section {
+    flex: 1;
+    border: 1px solid #7d96a5;
+    border-radius: 3px;
+}
+
+/* Grey Header like the image */
+.section-header {
+    background-color: #7d96a5;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.section-body {
+    padding: 10px;
+}
+
+/* Row & Field Alignment */
+.row {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.field label {
+    width: 120px;
+    font-size: 11px;
+    color: #333;
+}
+
+/* Labels with (+) are blue in image */
+.blue-label {
+    color: #0055ff !important;
+    font-weight: bold;
+}
+
+.field input, .field select, .field textarea {
+    flex: 1;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+.readonly-field {
+    background-color: #f9f9f9;
+    border: none !important;
+    font-weight: bold;
+}
+
+/* Footer & Buttons */
+.action-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link {
+    display: block;
+    color: #008eb3;
+    font-size: 11px;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-add {
+    background-color: #31b0d5;
+    color: white;
+    border: 1px solid #269abc;
+    padding: 6px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-back {
+    background-color: #00a8d4;
+    color: white;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Bottom Stats Bar */
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #e3edf4;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+.time-stamp {
+    font-size: 11px;
+    text-align: left;
+    position: absolute;
+    left: 10px;
+}
+
+.theme-info {
+    background-color: #31b0d5;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 12px;
+    font-size: 11px;
+}

@@ -1,0 +1,154 @@
+:root {
+    --primary-blue: #2299be;
+    --dark-blue: #007699;
+    --sidebar-bg: #008eb3;
+    --header-gray: #e9ecef;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f4f7;
+    font-size: 12px;
+}
+
+/* Header Styling */
+.top-nav {
+    background-color: var(--primary-blue);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    height: 35px;
+    align-items: center;
+    color: white;
+}
+
+.nav-links button {
+    background: none;
+    border: 1px solid #ffffff55;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.nav-links button.active {
+    background-color: #f0f4f7;
+    color: var(--dark-blue);
+    border-bottom: none;
+}
+
+.sub-header {
+    background: white;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Layout Wrapper */
+.wrapper {
+    display: flex;
+    height: calc(100vh - 100px);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background-color: var(--sidebar-bg);
+    padding-top: 10px;
+}
+
+.menu-item {
+    color: white;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ffffff33;
+    cursor: pointer;
+}
+
+.menu-item.active {
+    background-color: #fff;
+    color: var(--dark-blue);
+    margin: 5px;
+    border-radius: 4px;
+}
+
+/* Main Content Area */
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+.visa-card {
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.card-header {
+    background: #f8f9fa;
+    padding: 8px;
+    color: #0056b3;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #8c9fb1;
+    color: white;
+    text-align: left;
+    padding: 8px;
+}
+
+td {
+    border-bottom: 1px solid #eee;
+    padding: 6px 8px;
+}
+
+.input-section {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.input-row {
+    margin-bottom: 15px;
+}
+
+.btn-save {
+    background: #00c0ef;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-back {
+    background: #008eb3;
+    color: white;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 4px;
+}
+
+/* Footer */
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #d2d6de;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.theme-tag {
+    background: #3c8dbc;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 15px;
+}

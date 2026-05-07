@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imam Travels - Invoice Entry</title>
+    <link rel="stylesheet" href="ticket_booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-item active">Transactions</div>
+        <a href="Contact_Book_Inquiry.html">
+            <div><button class="sidebar-item">Contact Book</button></div>
+        </a>
+        <a href="Query_Inquiry.html">
+            <div><button class="sidebar-item">Query Inquiry</button></div>
+        </a>
+        <a href="Temporary_Booking.html">
+            <div><button class="sidebar-item">Temporary Booking</button></div>
+        </a>
+        <a href="Ticket_Booking.html">
+            <div><button class="sidebar-item">Ticket Booking</button></div>
+        </a>
+        <a href="Ticket_Inquiry.html">
+            <div><button class="sidebar-item">Ticket Inquiry</button></div>
+        </a>
+        <a href="Service_Inquiry.html">
+            <div><button class="sidebar-item">Service Inquiry</button></div>
+        </a>
+        <div class="sidebar-dropdown">Inquiries and Reports <i class="fa fa-caret-down"></i></div>
+        <div class="sidebar-dropdown">Maintenance <i class="fa fa-caret-down"></i></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="nav-links">
+                <a href="ticket.html"><button class="nav-btn active">Ticket Service</button></a>
+                <a href="service.html"><button class="nav-btn">Visa Service</button></a>
+                <a href="accounts.html"><button class="nav-btn">Accounts</button></a>
+                <a href="user.html"><button class="nav-btn">User</button></a>
+            </div>
+            <div class="user-info">
+                <span>Quick links | Configuration | Change password | <a href="#" onclick="logoutUser()">Logout</a></span>
+            </div>
+        </div>
+
+        <div class="page-title">Direct Purchase Invoice Entry</div>
+
+        <!-- Info Grid (Colored Boxes) -->
+        <div class="info-grid">
+            <!-- Customer Data (Pinkish/Red) -->
+            <div class="box customer-box">
+                <div class="box-header">Customer Data</div>
+                <div class="row">
+                    <span>Type:</span>
+                    <select id="type">
+                        <option>Ticket</option>
+                        <option>Service</option>
+                        <option>Both</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <span>Cust Type:</span>
+                    <select id="cust_type">
+                        <option>Agent</option>
+                        <option>Passenger</option>
+                    </select>
+                    <a href="add_new_contect.html">
+                        <button>+</button>
+                    </a>
+                </div>
+                <div class="row">
+                    <span>Family Head:</span>
+                    <input type="text" id="family_head">
+                </div>
+                <div class="row">
+                    <span>Current Credit:</span>
+                    <span class="credit-val">0.00</span>
+                </div>
+                <div class="row">
+                    <span>Passenger Reference:</span>
+                    <input type="text" id="pass_ref">
+                </div>
+            </div>
+
+            <!-- Dates (Green) -->
+            <div class="box dates-box">
+                <div class="box-header">Dates</div>
+                <div class="row"><span>Invoice Date:</span> <input type="date"></div>
+                <div class="row"><span>Travel Date:</span> <input type="date"></div>
+                <div class="row"><span>Show Return Date</span> <input type="checkbox"></div>
+                <div class="row"><span>Show Void Details</span> <input type="checkbox"></div>
+                <div class="row"><span>Show Refund Details</span> <input type="checkbox"></div>
+            </div>
+
+            <!-- Supplier Data (Blue) -->
+            <div class="box supplier-box">
+                <div class="box-header">Supplier Data</div>
+                <div class="row"><span>Supplier:</span> <select><option>Select Supplier</option></select> <button>+</button></div>
+                <div class="row"><span>Current Credit:</span> <span class="credit-val blue">0.00</span></div>
+                <div class="row"><span>Supplier's Reference:</span> <input type="text"></div>
+            </div>
+        </div>
+
+        <!-- Ticket Table Section -->
+        <div class="ticket-section">
+            <div class="section-label">Ticket</div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Passenger</th>
+                            <th>Ticket Type</th>
+                            <th>Ticket No</th>
+                            <th>Route</th>
+                            <th>Carrier</th>
+                            <th>Class</th>
+                            <th>Airline PNR</th>
+                            <th>Fare</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ticketRows">
+                        <!-- Server data will load here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+            <button class="btn-process"><i class="fa fa-check"></i> Process Invoice</button>
+            <button class="btn-cancel">Cancel Invoice</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

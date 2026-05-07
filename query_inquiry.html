@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Inquiry - Ticket Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="query_inquiry.css">
+    <link rel="icon" class="logo-circle" type="image/x-icon" href="imam_travel_and_tours_logo.jpeg">
+</head>
+<body>
+
+    <header class="company-header">
+    <a href="ticket.html" class="header-link">
+        <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo">
+        <span class="company-name">Imam Travel and Tours</span>
+    </a>
+</header>
+
+    <div class="top-nav">
+        <div class="nav-left">
+            <a href="ticket.html"><button>Ticket Service</button></a>
+            <a href="service.html"><button>Visa Service</button></a>
+            <a href="accounts.html"><button>Accounts</button></a>
+            <a href="user.html"><button>User</button></a>
+        </div>
+        <div class="nav-right">
+            <span>Quick links <i class="fa fa-caret-down"></i></span>
+            <span>Configuration</span>
+            <span>Change password</span>
+            <span class="logout" onclick="logoutUser()" style="cursor: pointer;">
+                <i class="fas fa-key"></i> Logout
+            </span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <div id="ticketSidebar">
+                <div class="menu-group">
+                    <button class="menu-head active" onclick="toggleMenu('trans')">Transactions <i class="fas fa-caret-down"></i></button>
+                    <div id="trans" class="menu-content show">
+                        <a href="Contact_Book_Inquiry.html"><button class="sub-link">Contact Book</button></a>
+                        <a href="query_inquiry.html"><button class="sub-link">Query Inquiry</button></a>
+                        <button class="sub-link">Temporary Booking</button>
+                        <button class="sub-link">Ticket Booking</button>
+                        <button class="sub-link">Ticket Inquiry</button>
+                        <button class="sub-link">Service Inquiry</button>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('inq')">Inquiries and Reports <i class="fas fa-caret-down"></i></button>
+                    <div id="inq" class="menu-content">
+                        <button class="sub-link">Customer Invoices Inquiry</button>
+                        <button class="sub-link">Customer Allocate Inquiry</button>
+                        <button class="sub-link">Customer And Sales Reports</button>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('maint')">Maintenance <i class="fas fa-caret-down"></i></button>
+                    <div id="maint" class="menu-content">
+                        <button class="sub-link">Add And Manage Customer</button>
+                        <button class="sub-link">Customer Branches</button>
+                        <button class="sub-link">Call Type</button>
+                        <button class="sub-link">Query Status</button>
+                        <button class="sub-link">Query Source</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <h2 class="page-title">Query Inquiry</h2>
+
+            <div class="filter-buttons" style="margin-bottom: 15px;">
+                <button class="btn-filter done" onclick="filterByStatus('Done')" id="btn-done">II Done(0)</button>
+                <button class="btn-filter processing" onclick="filterByStatus('Processing')" id="btn-processing">▲ Processing(0)</button>
+                <button class="btn-filter active" onclick="filterByStatus('Active')" id="btn-active">👍 Active(0)</button>
+                <button class="btn-filter all" onclick="filterByStatus('All')" id="btn-all">Ξ ALL(0)</button>
+            </div>
+
+            <div class="action-bar">
+                <a href="add_new_contect.html"><button class="btn-blue-outline"><i class="fa fa-book"></i> CONTACT BOOK</button></a>
+                <a href="add_new_query.html"><button class="btn-blue-solid"><i class="fa fa-bullhorn"></i> QUERY</button></a>
+                <button class="btn-green-solid"><i class="fa fa-calendar"></i> VIEW CALENDAR</button>
+            </div>
+
+            <div class="search-bar">
+                <span>From: <input type="text" value="13/03/2021"></span>
+                <span>To: <input type="text" value="21/04/2026"></span>
+                <span>Source: 
+                    <select>
+                        <option>All Source</option>
+                        <option>ABU JEE</option>
+                        <option>ADNAN FAZAL</option>
+                        <option>AGENT</option>
+                        <option>AUNTY BUSHRA</option>
+                        <option>COUNTER CLIENT</option>
+                        <option>FACEBOOK</option>
+                        <option>HASEEB RAZA</option>
+                        <option>HIMSELF</option>
+                        <option>MISS SAMEERA</option>
+                        <option>OLX</option>
+                        <option>PHONE</option>
+                        <option>SUFYAN SB ( UBL )</option>
+                        <option>SYED DAN HAIDAR</option>
+                        <option>TOK</option>
+                        <option>UMAR NAZIR</option>
+                        <option>WHAT'S UP</option>
+                    </select>
+                </span>
+
+                <!-- Search Bar mein User dropdown ko ID dein -->
+                <span>User: 
+                    <select id="filter_user_dropdown" onchange="searchQueries()">
+                        <option value="All Users">All Users</option>
+                    </select>
+                </span>
+                <!-- Forwarded To ke liye agar aapne koi filter ya input add karna hai -->
+                <!-- (Table ke andar row generate karte waqt hum wahi list use karenge) -->
+
+                <div class="search-inputs">
+                    <span>Name: <input type="text" id="filter_name"></span>
+                    <span>Mobile: <input type="text" id="filter_mobile"></span>
+                    <span>Whatsapp: <input type="text" id="filter_whatsapp"></span>
+                </div>
+            </div>
+
+            <table class="query-table">
+                <thead>
+                    <tr>
+                        <th>UPDATE</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Resource</th>
+                        <th>Q.Type</th>
+                        <th>Name</th>
+                        <th>Mobile</th>
+                        <th>Whatsapp</th>
+                        <th>Email</th>
+                        <th>Remark</th>
+                        <th>Forwarded To</th>
+                        <th>Assign By</th>
+                        <th>Follow up</th>
+                        <th>Create Order</th>
+                    </tr>
+                </thead>
+                <tbody id="queryTableBody">
+                    </tbody>
+            </table>
+                <div class="table-footer">
+                    <span>Records 1-7 of 7</span>
+                    <span class="pagination">First Prev Next Last</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bar">
+        21/04/2026 | 15:44
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+    <script type="module" src="script.js"></script> 
+</body>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Visa Service</title>
+    <link rel="stylesheet" href="add_new_visa_type.css">
+</head>
+<body>
+
+    <header class="top-nav">
+        <div class="nav-links">
+            <a href="ticket.html">
+                <button>Ticket Service</button>
+            </a>
+            <a href="service.html">
+                <button class="active">Visa Service</button>
+            </a>
+            <a href="accounts.html">
+                <button>Accounts</button>
+            </a>
+            <a href="user.html">
+                <button>User</button>
+            </a>
+        </div>
+        <div class="user-info">
+            <span>Quick links ▼</span>
+            <span>Configuration</span>
+            <span>Change password</span>
+            <span class="logout">🔑 Logout</span>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <aside class="sidebar">
+            <nav>
+                <div class="menu-item active">Transactions</div>
+                <div class="menu-item">Visa Detail</div>
+                <div class="menu-item">Add New Visa Information</div>
+                <div class="menu-item">
+                    <a href="add_new_visa_type.html">
+                        <button>Add New Visa Type</button>
+                    </a>
+                </div>
+                <div class="menu-item">Umrah Packages Booking</div>
+            </nav>
+        </aside>
+
+        <main class="content">
+            <div class="visa-card">
+                <div class="card-header">VISA NAMES AND PRICES</div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Visa Name</th>
+                                <th width="40"></th>
+                                <th width="40"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="visaList">
+                            </tbody>
+                    </table>
+                    <div class="inactive-check">
+                        <input type="checkbox" id="showInactive"> <label for="showInactive">Show also Inactive</label>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-row">
+                        <label>Visa Name:</label>
+                        <input type="text" id="visaInput" placeholder="Enter visa type">
+                    </div>
+                    <div class="actions">
+                        <button id="addBtn" class="btn-save">✅ Add new</button>
+                        <button class="btn-back">Back</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer-bar">
+        <div class="theme-tag">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>

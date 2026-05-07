@@ -1,0 +1,214 @@
+/* General Reset */
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: Arial, sans-serif; 
+}
+
+body { 
+    background-color: white; 
+    overflow-x: hidden; 
+}
+
+/* Top Navigation */
+.top-nav {
+    background-color: #008eb3;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.nav-links { 
+    display: flex; 
+    gap: 2px; 
+}
+
+.nav-btn {
+    background: #1a6d82;
+    border: 1px solid #005f73;
+    color: white;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.nav-btn.active { 
+    background-color: #f4f4f4; 
+    color: #005f73; 
+    font-weight: bold; 
+}
+
+.user-info { 
+    display: flex; 
+    gap: 15px; 
+    align-items: center; 
+}
+
+.change-pass { 
+    color: #ffe600; 
+    cursor: pointer; 
+}
+
+.logout { 
+    color: #ff9d00; 
+    cursor: pointer; 
+}
+
+/* Layout Containers */
+.main-container { 
+    display: flex; 
+    min-height: 85vh; 
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background-color: #008eb3;
+    padding-top: 10px;
+}
+
+.side-btn, .side-btn-drop {
+    width: 90%;
+    margin: 2px auto;
+    display: block;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.side-btn.active { 
+    background-color: #f4f4f4; 
+    color: #005f73; 
+    font-weight: bold; 
+}
+
+.side-btn:hover { 
+    background-color: rgba(255,255,255,0.1); 
+}
+
+/* Main Content */
+.content { 
+    flex-grow: 1; 
+    padding: 10px; 
+}
+
+.page-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* Action Buttons */
+.action-bar { 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-bottom: 20px; 
+}
+.action-btn {
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.red { 
+    background-color: #c9302c; 
+}
+
+.blue { 
+    background-color: #31b0d5; 
+}
+
+.dark-blue { 
+    background-color: #286090; 
+}
+
+.orange { 
+    background-color: #ec971f; 
+}
+
+/* Filter Section */
+.filter-section {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.filter-row { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 10px; 
+    margin-bottom: 5px; 
+}
+
+.filter-section input, .filter-section select { 
+    padding: 3px; 
+    border: 1px solid #ccc; 
+}
+
+.search-btn {
+    background-color: #31b0d5;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Table Styling */
+.table-wrapper { 
+    overflow-x: auto; 
+    border: 1px solid #ccc; 
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    font-size: 11px; 
+    text-align: center; 
+}
+
+th { 
+    background-color: #778899; 
+    color: white; 
+    padding: 8px; 
+    border: 1px solid #fff; }
+td { padding: 5px; border: 1px solid #ddd; }
+.no-records { background-color: #708090; color: white; height: 30px; }
+
+/* Footer */
+.bottom-info {
+    background-color: #e2eaf2;
+    padding: 5px;
+    border-top: 2px solid #008eb3;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.theme-tag {
+    background-color: #31b0d5;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}

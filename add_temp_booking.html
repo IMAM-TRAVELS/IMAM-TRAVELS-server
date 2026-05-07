@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Temp Booking</title>
+    <link rel="stylesheet" href="add_temp_booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="sections-wrapper">
+            
+            <div class="form-section">
+                <div class="section-header">Pax Detail</div>
+                <div class="section-body">
+                    <div class="row">
+                        <div class="field">
+                            <label>Trans No</label>
+                            <input type="text" value="TEMP00001" readonly class="readonly-field">
+                        </div>
+                        <div class="field"></div> 
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Title:</label>
+                            <select id="pax_title">
+                                <option>All Title</option>
+                                <option>Mr.</option>
+                                <option>Ms.</option>
+                                <option>Mrs.</option>
+                                <option>Miss.</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Sur Name:</label>
+                            <input type="text" id="pax_surname">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Given Name:</label>
+                            <input type="text" id="pax_givenname">
+                        </div>
+                        <div class="field">
+                            <label>F/H Name:</label>
+                            <input type="text" id="pax_fh_name">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Contact No:</label>
+                            <input type="number" id="pax_contact">
+                        </div>
+                        <div class="field">
+                            <label>Whatsapp No:</label>
+                            <input type="number" id="pax_whatsapp_no">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>PP No:</label>
+                            <input type="text" id="pax_pp_no">
+                        </div>
+                        <div class="field">
+                            <label>DOB:</label>
+                            <input type="date" id="pax_dob">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>PP Expire:</label>
+                            <input type="date" id="pax_pp_expire">
+                        </div>
+                        <div class="filter-group">
+                            <label>City:</label>
+                            <select id="searchCity">
+                                <option value="">Select City</option>
+                                <option value="Abha">Abha (Saudi Arabia)</option>
+                                <option value="Abu Dhabi">Abu Dhabi (UAE)</option>
+                                <option value="Abuja">Abuja (Nigeria)</option>
+                                <option value="Accra">Accra (Ghana)</option>
+                                <option value="Adana">Adana (Turkey)</option>
+                                <option value="Addis Ababa">Addis Ababa (Ethiopia)</option>
+                                <option value="Adelaide">Adelaide (Australia)</option>
+                                <option value="Ahmedabad">Ahmedabad (India)</option>
+                                <option value="Ajman">Ajman (UAE)</option>
+                                <option value="Al Ain">Al Ain (UAE)</option>
+                                <option value="Alexandria">Alexandria (Egypt)</option>
+                                <option value="Algiers">Algiers (Algeria)</option>
+                                <option value="Almaty">Almaty (Kazakhstan)</option>
+                                <option value="Amman">Amman (Jordan)</option>
+                                <option value="Amsterdam">Amsterdam (Netherlands)</option>
+                                <option value="Ankara">Ankara (Turkey)</option>
+                                <option value="Antalya">Antalya (Turkey)</option>
+                                <option value="Antananarivo">Antananarivo (Madagascar)</option>
+                                <option value="Antwerp">Antwerp (Belgium)</option>
+                                <option value="Apia">Apia (Samoa)</option>
+                                <option value="Ashgabat">Ashgabat (Turkmenistan)</option>
+                                <option value="Asmara">Asmara (Eritrea)</option>
+                                <option value="Astana">Astana (Kazakhstan)</option>
+                                <option value="Asuncion">Asuncion (Paraguay)</option>
+                                <option value="Athens">Athens (Greece)</option>
+                                <option value="Atlanta">Atlanta (USA)</option>
+                                <option value="Auckland">Auckland (New Zealand)</option>
+
+                                <option value="Baghdad">Baghdad (Iraq)</option>
+                                <option value="Baku">Baku (Azerbaijan)</option>
+                                <option value="Bamako">Bamako (Mali)</option>
+                                <option value="Bandar Seri Begawan">Bandar Seri Begawan (Brunei)</option>
+                                <option value="Bangalore">Bangalore (India)</option>
+                                <option value="Bangkok">Bangkok (Thailand)</option>
+                                <option value="Bangui">Bangui (CAR)</option>
+                                <option value="Banjul">Banjul (Gambia)</option>
+                                <option value="Barcelona">Barcelona (Spain)</option>
+                                <option value="Barquisimeto">Barquisimeto (Venezuela)</option>
+                                <option value="Basel">Basel (Switzerland)</option>
+                                <option value="Basra">Basra (Iraq)</option>
+                                <option value="Basseterre">Basseterre (St. Kitts)</option>
+                                <option value="Beijing">Beijing (China)</option>
+                                <option value="Beirut">Beirut (Lebanon)</option>
+                                <option value="Beira">Beira (Mozambique)</option>
+                                <option value="Belfast">Belfast (UK)</option>
+                                <option value="Belgrade">Belgrade (Serbia)</option>
+                                <option value="Belize City">Belize City (Belize)</option>
+                                <option value="Belo Horizonte">Belo Horizonte (Brazil)</option>
+                                <option value="Benghazi">Benghazi (Libya)</option>
+                                <option value="Bergen">Bergen (Norway)</option>
+                                <option value="Berlin">Berlin (Germany)</option>
+                                <option value="Berne">Berne (Switzerland)</option>
+                                <option value="Bishkek">Bishkek (Kyrgyzstan)</option>
+                                <option value="Bissau">Bissau (Guinea-Bissau)</option>
+                                <option value="Birmingham">Birmingham (UK)</option>
+                                <option value="Blantyre">Blantyre (Malawi)</option>
+                                <option value="Bogota">Bogota (Colombia)</option>
+                                <option value="Bordeaux">Bordeaux (France)</option>
+                                <option value="Boston">Boston (USA)</option>
+                                <option value="Brasilia">Brasilia (Brazil)</option>
+                                <option value="Bratislava">Bratislava (Slovakia)</option>
+                                <option value="Brazzaville">Brazzaville (Congo)</option>
+                                <option value="Bridgetown">Bridgetown (Barbados)</option>
+                                <option value="Brisbane">Brisbane (Australia)</option>
+                                <option value="Bristol">Bristol (UK)</option>
+                                <option value="Brussels">Brussels (Belgium)</option>
+                                <option value="Bucharest">Bucharest (Romania)</option>
+                                <option value="Budapest">Budapest (Hungary)</option>
+                                <option value="Buenos Aires">Buenos Aires (Argentina)</option>
+                                <option value="Bujumbura">Bujumbura (Burundi)</option>
+                                <option value="Bursa">Bursa (Turkey)</option>
+                                <option value="Busan">Busan (South Korea)</option>
+
+                                <option value="Cairo">Cairo (Egypt)</option>
+                                <option value="Calgary">Calgary (Canada)</option>
+                                <option value="Cali">Cali (Colombia)</option>
+                                <option value="Callao">Callao (Peru)</option>
+                                <option value="Canberra">Canberra (Australia)</option>
+                                <option value="Cancun">Cancun (Mexico)</option>
+                                <option value="Cape Town">Cape Town (South Africa)</option>
+                                <option value="Caracas">Caracas (Venezuela)</option>
+                                <option value="Cardiff">Cardiff (UK)</option>
+                                <option value="Casablanca">Casablanca (Morocco)</option>
+                                <option value="Castries">Castries (St. Lucia)</option>
+                                <option value="Cebu City">Cebu City (Philippines)</option>
+                                <option value="Chaguanas">Chaguanas (Trinidad)</option>
+                                <option value="Changsha">Changsha (China)</option>
+                                <option value="Charlotte">Charlotte (USA)</option>
+                                <option value="Chengdu">Chengdu (China)</option>
+                                <option value="Chennai">Chennai (India)</option>
+                                <option value="Chicago">Chicago (USA)</option>
+                                <option value="Chisinau">Chisinau (Moldova)</option>
+                                <option value="Chittagong">Chittagong (Bangladesh)</option>
+                                <option value="Chonburi">Chonburi (Thailand)</option>
+                                <option value="Christchurch">Christchurch (New Zealand)</option>
+                                <option value="Chongqing">Chongqing (China)</option>
+                                <option value="Cleveland">Cleveland (USA)</option>
+                                <option value="Cluj-Napoca">Cluj-Napoca (Romania)</option>
+                                <option value="Coimbatore">Coimbatore (India)</option>
+                                <option value="Cologne">Cologne (Germany)</option>
+                                <option value="Colombo">Colombo (Sri Lanka)</option>
+                                <option value="Conakry">Conakry (Guinea)</option>
+                                <option value="Constanta">Constanta (Romania)</option>
+                                <option value="Constantine">Constantine (Algeria)</option>
+                                <option value="Copenhagen">Copenhagen (Denmark)</option>
+                                <option value="Cordoba">Cordoba (Argentina)</option>
+                                <option value="Cork">Cork (Ireland)</option>
+                                <option value="Cotonou">Cotonou (Benin)</option>
+                                <option value="Curitiba">Curitiba (Brazil)</option>
+
+                                <option value="Dakar">Dakar (Senegal)</option>
+                                <option value="Dalian">Dalian (China)</option>
+                                <option value="Dallas">Dallas (USA)</option>
+                                <option value="Damascus">Damascus (Syria)</option>
+                                <option value="Dammam">Dammam (Saudi Arabia)</option>
+                                <option value="Dar es Salaam">Dar es Salaam (Tanzania)</option>
+                                <option value="Darwin">Darwin (Australia)</option>
+                                <option value="Davao City">Davao City (Philippines)</option>
+                                <option value="Debrecen">Debrecen (Hungary)</option>
+                                <option value="Delhi">Delhi (India)</option>
+                                <option value="Denver">Denver (USA)</option>
+                                <option value="Derby">Derby (UK)</option>
+                                <option value="Detroit">Detroit (USA)</option>
+                                <option value="Dhaka">Dhaka (Bangladesh)</option>
+                                <option value="Dili">Dili (Timor-Leste)</option>
+                                <option value="Djibouti City">Djibouti City (Djibouti)</option>
+                                <option value="Dnipropetrovsk">Dnipropetrovsk (Ukraine)</option>
+                                <option value="Doha">Doha (Qatar)</option>
+                                <option value="Donetsk">Donetsk (Ukraine)</option>
+                                <option value="Dortmund">Dortmund (Germany)</option>
+                                <option value="Douala">Douala (Cameroon)</option>
+                                <option value="Dresden">Dresden (Germany)</option>
+                                <option value="Dubai">Dubai (UAE)</option>
+                                <option value="Dublin">Dublin (Ireland)</option>
+                                <option value="Duisburg">Duisburg (Germany)</option>
+                                <option value="Durban">Durban (South Africa)</option>
+                                <option value="Dushanbe">Dushanbe (Tajikistan)</option>
+                                <option value="Dusseldorf">Dusseldorf (Germany)</option>
+
+                                <option value="Gaborone">Gaborone (Botswana)</option>
+                                <option value="Gaza City">Gaza City (Palestine)</option>
+                                <option value="Gdansk">Gdansk (Poland)</option>
+                                <option value="Geneva">Geneva (Switzerland)</option>
+                                <option value="Genoa">Genoa (Italy)</option>
+                                <option value="Georgetown">Georgetown (Guyana)</option>
+                                <option value="Ghent">Ghent (Belgium)</option>
+                                <option value="Giza">Giza (Egypt)</option>
+                                <option value="Glasgow">Glasgow (UK)</option>
+                                <option value="Goiania">Goiania (Brazil)</option>
+                                <option value="Gomel">Gomel (Belarus)</option>
+                                <option value="Gothenburg">Gothenburg (Sweden)</option>
+                                <option value="Graz">Graz (Austria)</option>
+                                <option value="Guadalajara">Guadalajara (Mexico)</option>
+                                <option value="Guangzhou">Guangzhou (China)</option>
+                                <option value="Guatemala City">Guatemala City (Guatemala)</option>
+                                <option value="Guayaquil">Guayaquil (Ecuador)</option>
+                                <option value="Gujranwala">Gujranwala (Pakistan)</option>
+                                <option value="Gujrat">Gujrat (Pakistan)</option>
+                                <option value="Gwangju">Gwangju (South Korea)</option>
+
+                                <option value="Ibadan">Ibadan (Nigeria)</option>
+                                <option value="Incheon">Incheon (South Korea)</option>
+                                <option value="Indore">Indore (India)</option>
+                                <option value="Islamabad">Islamabad (Pakistan)</option>
+                                <option value="Istanbul">Istanbul (Turkey)</option>
+                                <option value="Izmir">Izmir (Turkey)</option>
+                                <option value="Jakarta">Jakarta (Indonesia)</option>
+                                <option value="Jalalabad">Jalalabad (Afghanistan)</option>
+                                <option value="Jalalpur Jattan">Jalalpur Jattan (Pakistan)</option>
+                                <option value="Jeddah">Jeddah (Saudi Arabia)</option>
+                                <option value="Jerusalem">Jerusalem (Israel)</option>
+                                <option value="Johannesburg">Johannesburg (South Africa)</option>
+
+                                <option value="Kabul">Kabul (Afghanistan)</option>
+                                <option value="Kampala">Kampala (Uganda)</option>
+                                <option value="Kandahar">Kandahar (Afghanistan)</option>
+                                <option value="Karachi">Karachi (Pakistan)</option>
+                                <option value="Kathmandu">Kathmandu (Nepal)</option>
+                                <option value="Khartoum">Khartoum (Sudan)</option>
+                                <option value="Kingston">Kingston (Jamaica)</option>
+                                <option value="Kuala Lumpur">Kuala Lumpur (Malaysia)</option>
+                                <option value="Kuwait City">Kuwait City (Kuwait)</option>
+                                <option value="Kyiv">Kyiv (Ukraine)</option>
+                                <option value="Lagos">Lagos (Nigeria)</option>
+                                <option value="Lahore">Lahore (Pakistan)</option>
+                                <option value="Lima">Lima (Peru)</option>
+                                <option value="Lisbon">Lisbon (Portugal)</option>
+                                <option value="London">London (UK)</option>
+                                <option value="Los Angeles">Los Angeles (USA)</option>
+                                <option value="Lusaka">Lusaka (Zambia)</option>
+
+                                <option value="Madrid">Madrid (Spain)</option>
+                                <option value="Manama">Manama (Bahrain)</option>
+                                <option value="Manila">Manila (Philippines)</option>
+                                <option value="Mecca">Mecca (Saudi Arabia)</option>
+                                <option value="Melbourne">Melbourne (Australia)</option>
+                                <option value="Mexico City">Mexico City (Mexico)</option>
+                                <option value="Miami">Miami (USA)</option>
+                                <option value="Milan">Milan (Italy)</option>
+                                <option value="Montreal">Montreal (Canada)</option>
+                                <option value="Moscow">Moscow (Russia)</option>
+                                <option value="Mumbai">Mumbai (India)</option>
+                                <option value="Munich">Munich (Germany)</option>
+                                <option value="Muscat">Muscat (Oman)</option>
+                                <option value="Nairobi">Nairobi (Kenya)</option>
+                                <option value="New York">New York (USA)</option>
+                                <option value="Osaka">Osaka (Japan)</option>
+                                <option value="Oslo">Oslo (Norway)</option>
+                                <option value="Paris">Paris (France)</option>
+                                <option value="Peshawar">Peshawar (Pakistan)</option>
+                                <option value="Quetta">Quetta (Pakistan)</option>
+                                <option value="Riyadh">Riyadh (Saudi Arabia)</option>
+                                <option value="Rome">Rome (Italy)</option>
+                                <option value="Seoul">Seoul (South Korea)</option>
+                                <option value="Shanghai">Shanghai (China)</option>
+                                <option value="Sialkot">Sialkot (Pakistan)</option>
+                                <option value="Singapore">Singapore (Singapore)</option>
+                                <option value="Sydney">Sydney (Australia)</option>
+                                <option value="Tashkent">Tashkent (Uzbekistan)</option>
+                                <option value="Tokyo">Tokyo (Japan)</option>
+                                <option value="Toronto">Toronto (Canada)</option>
+                                <option value="Vancouver">Vancouver (Canada)</option>
+                                <option value="Vienna">Vienna (Austria)</option>
+                                <option value="Warsaw">Warsaw (Poland)</option>
+                                <option value="Washington D.C.">Washington D.C. (USA)</option>
+                                <option value="Zurich">Zurich (Switzerland)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="filter-group">
+                            <label>City:</label>
+                            <select id="searchCity">
+                                <option value="">Select City</option>
+                                <option value="Abha">Abha (Saudi Arabia)</option>
+                                <option value="Abu Dhabi">Abu Dhabi (UAE)</option>
+                                <option value="Abuja">Abuja (Nigeria)</option>
+                                <option value="Accra">Accra (Ghana)</option>
+                                <option value="Adana">Adana (Turkey)</option>
+                                <option value="Addis Ababa">Addis Ababa (Ethiopia)</option>
+                                <option value="Adelaide">Adelaide (Australia)</option>
+                                <option value="Ahmedabad">Ahmedabad (India)</option>
+                                <option value="Ajman">Ajman (UAE)</option>
+                                <option value="Al Ain">Al Ain (UAE)</option>
+                                <option value="Alexandria">Alexandria (Egypt)</option>
+                                <option value="Algiers">Algiers (Algeria)</option>
+                                <option value="Almaty">Almaty (Kazakhstan)</option>
+                                <option value="Amman">Amman (Jordan)</option>
+                                <option value="Amsterdam">Amsterdam (Netherlands)</option>
+                                <option value="Ankara">Ankara (Turkey)</option>
+                                <option value="Antalya">Antalya (Turkey)</option>
+                                <option value="Antananarivo">Antananarivo (Madagascar)</option>
+                                <option value="Antwerp">Antwerp (Belgium)</option>
+                                <option value="Apia">Apia (Samoa)</option>
+                                <option value="Ashgabat">Ashgabat (Turkmenistan)</option>
+                                <option value="Asmara">Asmara (Eritrea)</option>
+                                <option value="Astana">Astana (Kazakhstan)</option>
+                                <option value="Asuncion">Asuncion (Paraguay)</option>
+                                <option value="Athens">Athens (Greece)</option>
+                                <option value="Atlanta">Atlanta (USA)</option>
+                                <option value="Auckland">Auckland (New Zealand)</option>
+
+                                <option value="Baghdad">Baghdad (Iraq)</option>
+                                <option value="Baku">Baku (Azerbaijan)</option>
+                                <option value="Bamako">Bamako (Mali)</option>
+                                <option value="Bandar Seri Begawan">Bandar Seri Begawan (Brunei)</option>
+                                <option value="Bangalore">Bangalore (India)</option>
+                                <option value="Bangkok">Bangkok (Thailand)</option>
+                                <option value="Bangui">Bangui (CAR)</option>
+                                <option value="Banjul">Banjul (Gambia)</option>
+                                <option value="Barcelona">Barcelona (Spain)</option>
+                                <option value="Barquisimeto">Barquisimeto (Venezuela)</option>
+                                <option value="Basel">Basel (Switzerland)</option>
+                                <option value="Basra">Basra (Iraq)</option>
+                                <option value="Basseterre">Basseterre (St. Kitts)</option>
+                                <option value="Beijing">Beijing (China)</option>
+                                <option value="Beirut">Beirut (Lebanon)</option>
+                                <option value="Beira">Beira (Mozambique)</option>
+                                <option value="Belfast">Belfast (UK)</option>
+                                <option value="Belgrade">Belgrade (Serbia)</option>
+                                <option value="Belize City">Belize City (Belize)</option>
+                                <option value="Belo Horizonte">Belo Horizonte (Brazil)</option>
+                                <option value="Benghazi">Benghazi (Libya)</option>
+                                <option value="Bergen">Bergen (Norway)</option>
+                                <option value="Berlin">Berlin (Germany)</option>
+                                <option value="Berne">Berne (Switzerland)</option>
+                                <option value="Bishkek">Bishkek (Kyrgyzstan)</option>
+                                <option value="Bissau">Bissau (Guinea-Bissau)</option>
+                                <option value="Birmingham">Birmingham (UK)</option>
+                                <option value="Blantyre">Blantyre (Malawi)</option>
+                                <option value="Bogota">Bogota (Colombia)</option>
+                                <option value="Bordeaux">Bordeaux (France)</option>
+                                <option value="Boston">Boston (USA)</option>
+                                <option value="Brasilia">Brasilia (Brazil)</option>
+                                <option value="Bratislava">Bratislava (Slovakia)</option>
+                                <option value="Brazzaville">Brazzaville (Congo)</option>
+                                <option value="Bridgetown">Bridgetown (Barbados)</option>
+                                <option value="Brisbane">Brisbane (Australia)</option>
+                                <option value="Bristol">Bristol (UK)</option>
+                                <option value="Brussels">Brussels (Belgium)</option>
+                                <option value="Bucharest">Bucharest (Romania)</option>
+                                <option value="Budapest">Budapest (Hungary)</option>
+                                <option value="Buenos Aires">Buenos Aires (Argentina)</option>
+                                <option value="Bujumbura">Bujumbura (Burundi)</option>
+                                <option value="Bursa">Bursa (Turkey)</option>
+                                <option value="Busan">Busan (South Korea)</option>
+
+                                <option value="Cairo">Cairo (Egypt)</option>
+                                <option value="Calgary">Calgary (Canada)</option>
+                                <option value="Cali">Cali (Colombia)</option>
+                                <option value="Callao">Callao (Peru)</option>
+                                <option value="Canberra">Canberra (Australia)</option>
+                                <option value="Cancun">Cancun (Mexico)</option>
+                                <option value="Cape Town">Cape Town (South Africa)</option>
+                                <option value="Caracas">Caracas (Venezuela)</option>
+                                <option value="Cardiff">Cardiff (UK)</option>
+                                <option value="Casablanca">Casablanca (Morocco)</option>
+                                <option value="Castries">Castries (St. Lucia)</option>
+                                <option value="Cebu City">Cebu City (Philippines)</option>
+                                <option value="Chaguanas">Chaguanas (Trinidad)</option>
+                                <option value="Changsha">Changsha (China)</option>
+                                <option value="Charlotte">Charlotte (USA)</option>
+                                <option value="Chengdu">Chengdu (China)</option>
+                                <option value="Chennai">Chennai (India)</option>
+                                <option value="Chicago">Chicago (USA)</option>
+                                <option value="Chisinau">Chisinau (Moldova)</option>
+                                <option value="Chittagong">Chittagong (Bangladesh)</option>
+                                <option value="Chonburi">Chonburi (Thailand)</option>
+                                <option value="Christchurch">Christchurch (New Zealand)</option>
+                                <option value="Chongqing">Chongqing (China)</option>
+                                <option value="Cleveland">Cleveland (USA)</option>
+                                <option value="Cluj-Napoca">Cluj-Napoca (Romania)</option>
+                                <option value="Coimbatore">Coimbatore (India)</option>
+                                <option value="Cologne">Cologne (Germany)</option>
+                                <option value="Colombo">Colombo (Sri Lanka)</option>
+                                <option value="Conakry">Conakry (Guinea)</option>
+                                <option value="Constanta">Constanta (Romania)</option>
+                                <option value="Constantine">Constantine (Algeria)</option>
+                                <option value="Copenhagen">Copenhagen (Denmark)</option>
+                                <option value="Cordoba">Cordoba (Argentina)</option>
+                                <option value="Cork">Cork (Ireland)</option>
+                                <option value="Cotonou">Cotonou (Benin)</option>
+                                <option value="Curitiba">Curitiba (Brazil)</option>
+
+                                <option value="Dakar">Dakar (Senegal)</option>
+                                <option value="Dalian">Dalian (China)</option>
+                                <option value="Dallas">Dallas (USA)</option>
+                                <option value="Damascus">Damascus (Syria)</option>
+                                <option value="Dammam">Dammam (Saudi Arabia)</option>
+                                <option value="Dar es Salaam">Dar es Salaam (Tanzania)</option>
+                                <option value="Darwin">Darwin (Australia)</option>
+                                <option value="Davao City">Davao City (Philippines)</option>
+                                <option value="Debrecen">Debrecen (Hungary)</option>
+                                <option value="Delhi">Delhi (India)</option>
+                                <option value="Denver">Denver (USA)</option>
+                                <option value="Derby">Derby (UK)</option>
+                                <option value="Detroit">Detroit (USA)</option>
+                                <option value="Dhaka">Dhaka (Bangladesh)</option>
+                                <option value="Dili">Dili (Timor-Leste)</option>
+                                <option value="Djibouti City">Djibouti City (Djibouti)</option>
+                                <option value="Dnipropetrovsk">Dnipropetrovsk (Ukraine)</option>
+                                <option value="Doha">Doha (Qatar)</option>
+                                <option value="Donetsk">Donetsk (Ukraine)</option>
+                                <option value="Dortmund">Dortmund (Germany)</option>
+                                <option value="Douala">Douala (Cameroon)</option>
+                                <option value="Dresden">Dresden (Germany)</option>
+                                <option value="Dubai">Dubai (UAE)</option>
+                                <option value="Dublin">Dublin (Ireland)</option>
+                                <option value="Duisburg">Duisburg (Germany)</option>
+                                <option value="Durban">Durban (South Africa)</option>
+                                <option value="Dushanbe">Dushanbe (Tajikistan)</option>
+                                <option value="Dusseldorf">Dusseldorf (Germany)</option>
+
+                                <option value="Gaborone">Gaborone (Botswana)</option>
+                                <option value="Gaza City">Gaza City (Palestine)</option>
+                                <option value="Gdansk">Gdansk (Poland)</option>
+                                <option value="Geneva">Geneva (Switzerland)</option>
+                                <option value="Genoa">Genoa (Italy)</option>
+                                <option value="Georgetown">Georgetown (Guyana)</option>
+                                <option value="Ghent">Ghent (Belgium)</option>
+                                <option value="Giza">Giza (Egypt)</option>
+                                <option value="Glasgow">Glasgow (UK)</option>
+                                <option value="Goiania">Goiania (Brazil)</option>
+                                <option value="Gomel">Gomel (Belarus)</option>
+                                <option value="Gothenburg">Gothenburg (Sweden)</option>
+                                <option value="Graz">Graz (Austria)</option>
+                                <option value="Guadalajara">Guadalajara (Mexico)</option>
+                                <option value="Guangzhou">Guangzhou (China)</option>
+                                <option value="Guatemala City">Guatemala City (Guatemala)</option>
+                                <option value="Guayaquil">Guayaquil (Ecuador)</option>
+                                <option value="Gujranwala">Gujranwala (Pakistan)</option>
+                                <option value="Gujrat">Gujrat (Pakistan)</option>
+                                <option value="Gwangju">Gwangju (South Korea)</option>
+
+                                <option value="Ibadan">Ibadan (Nigeria)</option>
+                                <option value="Incheon">Incheon (South Korea)</option>
+                                <option value="Indore">Indore (India)</option>
+                                <option value="Islamabad">Islamabad (Pakistan)</option>
+                                <option value="Istanbul">Istanbul (Turkey)</option>
+                                <option value="Izmir">Izmir (Turkey)</option>
+                                <option value="Jakarta">Jakarta (Indonesia)</option>
+                                <option value="Jalalabad">Jalalabad (Afghanistan)</option>
+                                <option value="Jalalpur Jattan">Jalalpur Jattan (Pakistan)</option>
+                                <option value="Jeddah">Jeddah (Saudi Arabia)</option>
+                                <option value="Jerusalem">Jerusalem (Israel)</option>
+                                <option value="Johannesburg">Johannesburg (South Africa)</option>
+
+                                <option value="Kabul">Kabul (Afghanistan)</option>
+                                <option value="Kampala">Kampala (Uganda)</option>
+                                <option value="Kandahar">Kandahar (Afghanistan)</option>
+                                <option value="Karachi">Karachi (Pakistan)</option>
+                                <option value="Kathmandu">Kathmandu (Nepal)</option>
+                                <option value="Khartoum">Khartoum (Sudan)</option>
+                                <option value="Kingston">Kingston (Jamaica)</option>
+                                <option value="Kuala Lumpur">Kuala Lumpur (Malaysia)</option>
+                                <option value="Kuwait City">Kuwait City (Kuwait)</option>
+                                <option value="Kyiv">Kyiv (Ukraine)</option>
+                                <option value="Lagos">Lagos (Nigeria)</option>
+                                <option value="Lahore">Lahore (Pakistan)</option>
+                                <option value="Lima">Lima (Peru)</option>
+                                <option value="Lisbon">Lisbon (Portugal)</option>
+                                <option value="London">London (UK)</option>
+                                <option value="Los Angeles">Los Angeles (USA)</option>
+                                <option value="Lusaka">Lusaka (Zambia)</option>
+
+                                <option value="Madrid">Madrid (Spain)</option>
+                                <option value="Manama">Manama (Bahrain)</option>
+                                <option value="Manila">Manila (Philippines)</option>
+                                <option value="Mecca">Mecca (Saudi Arabia)</option>
+                                <option value="Melbourne">Melbourne (Australia)</option>
+                                <option value="Mexico City">Mexico City (Mexico)</option>
+                                <option value="Miami">Miami (USA)</option>
+                                <option value="Milan">Milan (Italy)</option>
+                                <option value="Montreal">Montreal (Canada)</option>
+                                <option value="Moscow">Moscow (Russia)</option>
+                                <option value="Mumbai">Mumbai (India)</option>
+                                <option value="Munich">Munich (Germany)</option>
+                                <option value="Muscat">Muscat (Oman)</option>
+                                <option value="Nairobi">Nairobi (Kenya)</option>
+                                <option value="New York">New York (USA)</option>
+                                <option value="Osaka">Osaka (Japan)</option>
+                                <option value="Oslo">Oslo (Norway)</option>
+                                <option value="Paris">Paris (France)</option>
+                                <option value="Peshawar">Peshawar (Pakistan)</option>
+                                <option value="Quetta">Quetta (Pakistan)</option>
+                                <option value="Riyadh">Riyadh (Saudi Arabia)</option>
+                                <option value="Rome">Rome (Italy)</option>
+                                <option value="Seoul">Seoul (South Korea)</option>
+                                <option value="Shanghai">Shanghai (China)</option>
+                                <option value="Sialkot">Sialkot (Pakistan)</option>
+                                <option value="Singapore">Singapore (Singapore)</option>
+                                <option value="Sydney">Sydney (Australia)</option>
+                                <option value="Tashkent">Tashkent (Uzbekistan)</option>
+                                <option value="Tokyo">Tokyo (Japan)</option>
+                                <option value="Toronto">Toronto (Canada)</option>
+                                <option value="Vancouver">Vancouver (Canada)</option>
+                                <option value="Vienna">Vienna (Austria)</option>
+                                <option value="Warsaw">Warsaw (Poland)</option>
+                                <option value="Washington D.C.">Washington D.C. (USA)</option>
+                                <option value="Zurich">Zurich (Switzerland)</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label class="blue-label">Reference(+):</label>
+                            <select id="searchAgent">
+                                <option>IMAM TRV</option>
+                                <option>AN SHRAH TRV AGENT</option>
+                                <option>HAJJI SAAB AGENT</option>
+                                <option>HASHIM TRV AGENT</option>
+                                <option>IRFAN MIRPUR AGENT</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Date & Time:</label>
+                            <input type="datetime-local" id="pax_datetime">
+                        </div>
+                        <div class="field">
+                            <label>Ticket no:</label>
+                            <input type="text" id="pax_ticket_no">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="section-header">Airline & Fare Detail</div>
+                <div class="section-body">
+                    <div class="row">
+                        <div class="field">
+                            <label>Route:</label>
+                            <input type="text" id="airline_route" placeholder="Enter Route">
+                        </div>
+                        <div class="field">
+                            <label class="blue-label">Carrer(+):</label>
+                            <select id="airline_carrier">
+                                <option>9P</option>
+                                <option>PK</option>
+                                <option>CZ</option>
+                                <option>EK</option>
+                                <option>ER</option>
+                                <option>EY</option>
+                                <option>FZ</option>
+                                <option>G9</option>
+                                <option>GF</option>
+                                <option>J9</option>
+                                <option>MH</option>
+                                <option>OD</option>
+                                <option>OV</option>
+                                <option>PC</option>
+                                <option>PF</option>
+                                <option>PA</option>
+                                <option>QR</option>
+                                <option>SV</option>
+                                <option>TG</option>
+                                <option>TK</option>
+                                <option>UL</option>
+                                <option>WY</option>
+                                <option>XY</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Class:</label>
+                            <input type="text" id="airline_class">
+                        </div>
+                        <div class="field">
+                            <label>PNR:</label>
+                            <input type="text" id="airline_pnr" placeholder="Enter PNR">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>GDS PNR:</label>
+                            <input type="text" id="airline_gds_pnr" placeholder="Enter GDS PNR">
+                        </div>
+                        <div class="field">
+                            <label>Fare:</label>
+                            <input type="text" id="airline_fare" placeholder="Enter Fare">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Taxes:</label>
+                            <input type="text" id="airline_taxes" placeholder="Enter Taxes">
+                        </div>
+                        <div class="field">
+                            <label>Total Fare:</label>
+                            <input type="text" id="airline_total_fare" placeholder="Enter Total Fare">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Sale:</label>
+                            <input type="text" id="airline_sale" placeholder="Enter Sale">
+                        </div>
+                        <div class="field">
+                            <label>Remarks:</label>
+                            <textarea rows="3" id="airline_remarks" placeholder="Enter Remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-footer">
+            <a href="temporary_booking.html" class="back-link">Go to Temp Booking Inquiry</a>
+            <div class="btn-group">
+                <button class="btn-add" onclick="saveBookingToFirebase()">
+                    <i class="fas fa-check-circle"></i> Add new
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bar">
+        <div class="time-stamp">05/05/2026 | 12:24</div>
+        <div class="theme-info">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </div>
+
+    <!-- Inhein hata dein -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+:root {
+    --primary-blue: #008eb3;
+    --light-grey: #f4f4f4;
+    --border-color: #ddd;
+    --text-dark: #333;
+    --sidebar-width: 160px; /* Naveen sidebar width */
+    --top-nav-height: 35px; /* Naveen top nav height */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #fff;
+    overflow: hidden; /* Main page scroll thambavnyasathi */
+}
+
+/* TOP NAVIGATION */
+.top-nav {
+    background-color: var(--primary-blue);
+    height: var(--top-nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    color: white;
+    font-size: 12px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.nav-left-links { display: flex; height: 100%; }
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+.nav-link.active { background-color: #fff; color: var(--primary-blue); font-weight: bold; }
+
+.nav-right-meta { display: flex; gap: 15px; align-items: center; }
+
+/* MAIN LAYOUT WRAPPER */
+.layout-wrapper {
+    display: flex;
+    margin-top: var(--top-nav-height);
+    height: calc(100vh - var(--top-nav-height));
+}
+
+/* SIDEBAR STYLING */
+.left-sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--primary-blue);
+    padding: 10px;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.sidebar-btn-transactions {
+    width: 100%;
+    background: #006c88;
+    color: white;
+    border: 1px solid white;
+    padding: 8px;
+    text-align: left;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* CONTENT SCROLLING */
+.main-content {
+    flex: 1;
+    overflow-y: auto; /* Fakt content area scroll hoil */
+    background: white;
+}
+
+.page-header {
+    background: #fff;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary-blue);
+}
+
+.service-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 15px;
+    background: #fff;
+}
+
+.tab-btn {
+    padding: 6px 12px;
+    border: 1px solid var(--primary-blue);
+    background: transparent;
+    color: blue;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.tab-btn.active {
+    background: var(--light-grey);
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.section-title {
+    padding-left: 20px;
+    font-size: 18px;
+    color: #444;
+}
+
+/* Accordion Styling */
+.accordion {
+    margin: 0 20px;
+}
+
+.accordion-item {
+    margin-bottom: 2px;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    background: var(--light-grey);
+    border: 1px solid var(--border-color);
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px 40px;
+    border: 1px solid var(--border-color);
+    border-top: none;
+}
+
+.visa-type h4 {
+    color: #000;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.doc-list {
+    list-style: none;
+    padding-left: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+    font-weight: bold;
+}
+
+.price {
+    text-decoration: underline;
+}
+
+.visa-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+/* Header: Greyish Blue style */
+.visa-table thead tr {
+    background-color: #8c9fb1; 
+    color: white;
+}
+
+.visa-table th {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Table Rows */
+.visa-table td {
+    padding: 8px 10px;
+    border: 1px solid #eee;
+    font-size: 12px;
+    color: #333;
+}
+
+/* Center Icons */
+.icon-col {
+    width: 40px;
+    text-align: center;
+}
+
+/* Footer checkbox section */
+.footer-check {
+    padding: 10px;
+    background: #fcfcfc;
+    border: 1px solid #ddd;
+    border-top: none;
+    font-size: 12px;
+}
+
+/* Row Hover effect */
+.visa-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
