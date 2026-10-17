@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cash Payment | Imam Travel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="cash_received.css" />
+    <link rel="stylesheet" href="cash_payment.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="icon" type="image/x-icon" href="imam_travel_and_tours_logo.jpeg" />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo" />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav cash-top-nav">
+      <div class="cash-service-tabs">
+        <a class="cash-service-tab" href="ticket.html">Ticket Service</a>
+        <a class="cash-service-tab" href="service.html">Visa Service</a>
+        <a class="cash-service-tab selected" href="accounts.html">Accounts</a>
+        <a class="cash-service-tab" href="user.html">User</a>
+      </div>
+      <div class="cash-logout-bar nav-right">
+        <span class="cash-header-spacer"></span>
+        <div class="cash-quick-links">
+          <button type="button" class="cash-quick-links-trigger">
+            Quick links <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <div class="cash-quick-links-menu">
+            <a href="add_new_contect.html"
+              ><i class="fas fa-users text-aqua" aria-hidden="true"></i> Add
+              Passenger/ Agent</a
+            >
+            <a href="add_vendor.html"
+              ><i class="fas fa-user-plus text-green" aria-hidden="true"></i>
+              Add Supplier</a
+            >
+            <a href="Contact_Book_Inquiry.html"
+              ><i
+                class="fas fa-address-book text-yellow"
+                aria-hidden="true"
+              ></i>
+              Add Contact Book</a
+            >
+            <a href="query_inquiry.html"
+              ><i class="fas fa-plus text-red" aria-hidden="true"></i> Add
+              Query</a
+            >
+            <a href="temporary_booking.html"
+              ><i class="fas fa-plus text-red" aria-hidden="true"></i> Add Temp
+              Booking</a
+            >
+            <a href="ticket_booking.html"
+              ><i class="fas fa-plus text-red" aria-hidden="true"></i> Add
+              Ticket Booking</a
+            >
+            <a href="accounts.html"
+              ><i class="fas fa-chart-line text-red" aria-hidden="true"></i> GL
+              Reports</a
+            >
+          </div>
+        </div>
+        <span class="cash-header-shortcut">Configuration</span>
+        <span class="cash-header-shortcut">Change password</span>
+        <button type="button" class="cash-header-logout" onclick="logoutUser()">
+          <i class="fas fa-key" aria-hidden="true"></i> Logout
+        </button>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="accountsSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content show">
+              <a href="cash_received.html"><button class="sub-link" type="button">Cash Receipt Voucher</button></a>
+              <a href="cash_payment.html"><button class="sub-link active" type="button">Cash Payment Voucher</button></a>
+              <a href="bank_received.html"><button class="sub-link" type="button">Bank Receipt Voucher</button></a>
+              <a href="bank_payment.html"><button class="sub-link" type="button">Bank Payments Voucher</button></a>
+              <a class="sub-link" href="bank_transfer.html">Bank to Bank Transfer</a>
+              <button class="sub-link" type="button">Journal Entry</button>
+              <button class="sub-link" type="button">Reconcile Bank Account</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link" type="button">Journal Inquiry</button>
+              <button class="sub-link" type="button">GL Inquiry</button>
+              <button class="sub-link" type="button">Bank Account Inquiry</button>
+              <button class="sub-link" type="button">Trial Balance</button>
+              <button class="sub-link" type="button">Balance Sheet drilldown</button>
+              <button class="sub-link" type="button">Profit and Loss Drilldown</button>
+              <button class="sub-link" type="button">Banking Reports</button>
+              <button class="sub-link" type="button">General Ledger Reports</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link" type="button">Bank Account</button>
+              <button class="sub-link" type="button">GL Accounts</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard cash-received-dashboard cash-payment-dashboard">
+        <div class="cash-page-heading">
+          <a href="ticket.html" class="cash-back-link" aria-label="Back to dashboard">
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          </a>
+          <h1>Cash Payment Voucher Entry</h1>
+        </div>
+
+        <section class="cash-entry-panel" aria-label="Cash payment entry">
+          <div id="cashReceiptSaveStatus" class="cash-receipt-status" role="status" aria-live="polite"></div>
+          <div class="cash-entry-grid">
+            <div class="cash-field-column">
+              <label class="cash-field">
+                <span>Date</span>
+                <input id="receiptDate" type="date" />
+              </label>
+              <label class="cash-field">
+                <span>Reference</span>
+                <input
+                  id="receiptReference"
+                  type="text"
+                  readonly
+                  placeholder="Generating reference..."
+                />
+                <span id="receiptReferenceError" role="alert" hidden></span>
+              </label>
+            </div>
+            <div class="cash-field-column">
+              <label class="cash-field">
+                <span>From</span>
+                <select id="receiptFrom">
+                  <option value="customer" selected>Customer</option>
+                  <option value="supplier">Supplier</option>
+                  <option value="employee">Employee</option>
+                </select>
+              </label>
+              <label
+                class="cash-field cash-source-field"
+                id="receiptCustomerField"
+                hidden
+              >
+                <span>Customer</span>
+                <span class="cash-source-control">
+                  <input
+                    id="receiptCustomerSearch"
+                    class="cash-customer-search"
+                    type="search"
+                    placeholder="Contact no., name or passport"
+                    aria-label="Search customers by contact number, name or passport"
+                    disabled
+                  />
+                  <span class="cash-customer-select-row">
+                    <select id="receiptCustomer" disabled>
+                      <option value="">Select a customer</option>
+                    </select>
+                    <a
+                      class="cash-source-action"
+                      href="add_new_contect.html"
+                      aria-label="Edit or add customer"
+                      title="Edit or add customer"
+                      ><i class="fas fa-pen-to-square" aria-hidden="true"></i
+                    ></a>
+                    <a
+                      class="cash-source-action"
+                      href="Contact_Book_Inquiry.html"
+                      aria-label="Search customers"
+                      title="Search customers"
+                      ><i class="fas fa-magnifying-glass" aria-hidden="true"></i
+                    ></a>
+                  </span>
+                </span>
+              </label>
+            </div>
+            <div class="cash-field-column">
+              <label class="cash-field">
+                <span>From</span>
+                <select id="receiptInto">
+                  <option>Cash in Hand</option>
+                </select>
+              </label>
+              <div class="cash-field cash-balance">
+                <span>Cash in Hand Balance</span>
+                <strong id="cashInHandBalance">Loading...</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="cash-section" aria-labelledby="depositItemsHeading">
+          <h2 id="depositItemsHeading">Payment Items</h2>
+          <div class="cash-table-scroll">
+            <table class="cash-table">
+              <thead>
+                <tr>
+                  <th>Account Code</th>
+                  <th>5000</th>
+                  <th>1000</th>
+                  <th>500</th>
+                  <th>100</th>
+                  <th>50</th>
+                  <th>20</th>
+                  <th>10</th>
+                  <th>Total Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input aria-label="Account code" type="text" maxlength="10" readonly /></td>
+                  <td><input aria-label="5000 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="1000 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="500 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="100 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="50 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="20 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="10 notes" type="number" min="0" step="1" value="0" /></td>
+                  <td><input aria-label="Total amount" type="number" min="0" step="0.01" value="0.00" readonly /></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <label class="cash-memo">
+            <span>Memo</span>
+            <textarea id="receiptMemo" rows="3"></textarea>
+          </label>
+          <div class="cash-submit-row">
+            <button id="processCashReceipt" type="button" class="cash-action-button cash-process-button">
+              <i class="fas fa-check" aria-hidden="true"></i> Process Payment
+            </button>
+          </div>
+        </section>
+
+        <section class="cash-section cash-today-section" aria-labelledby="todayPaymentsHeading">
+          <h2 id="todayPaymentsHeading">Today's Cash Payments</h2>
+          <div class="cash-table-scroll">
+            <table class="cash-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Trans #</th>
+                  <th>Reference</th>
+                  <th>Amount</th>
+                  <th>Customer</th>
+                </tr>
+              </thead>
+              <tbody id="todayCashDeposits"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer class="footer">
+      <div id="clock"></div>
+      <div class="badge">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+    <script type="module" src="script.js"></script>
+    <script>
+      document.getElementById("receiptDate").value = new Date().toISOString().slice(0, 10);
+    </script>
+  </body>
+</html>

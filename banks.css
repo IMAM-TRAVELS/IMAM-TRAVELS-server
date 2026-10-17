@@ -1,0 +1,7 @@
+.form-section { background: #f9f9f9; padding: 20px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; }
+.form-section input, .form-section select { padding: 10px; margin-right: 10px; border: 1px solid #ccc; }
+.data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+.data-table th, .data-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+.data-table th { background: #1B7B9E; color: white; }
+button { padding: 10px 20px; background: #2B99B9; color: white; border: none; cursor: pointer; }
+button:hover { background: #15617D; }

@@ -1,0 +1,69 @@
+.agent-users-page {
+  min-width: 0;
+  padding: 24px;
+  color: #263238;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.back-link {
+  color: #1b7b9e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.page-header {
+  margin: 24px 0;
+  padding: 18px 20px;
+  border-left: 4px solid #0787c9;
+  background: #fff;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+}
+
+.page-header p,
+.status {
+  color: #607d8b;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.agent-users-page .table-wrapper {
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #e8eef0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: #f5f8f9;
+  color: #52656d;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    height: auto;
+    min-height: calc(100vh - 110px);
+  }
+
+  .agent-users-page {
+    padding: 18px 12px;
+  }
+}

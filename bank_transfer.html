@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bank to Bank Transfer | Imam Travel</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="bank_payment.css" />
+    <link rel="stylesheet" href="bank_transfer.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav cash-top-nav">
+      <div class="cash-service-tabs">
+        <a class="cash-service-tab" href="ticket.html">Ticket Service</a>
+        <a class="cash-service-tab" href="service.html">Visa Service</a>
+        <a class="cash-service-tab selected" href="accounts.html">Accounts</a>
+        <a class="cash-service-tab" href="user.html">User</a>
+      </div>
+      <div class="cash-logout-bar nav-right">
+        <span class="cash-header-spacer"></span>
+        <div class="cash-quick-links">
+          <button type="button" class="cash-quick-links-trigger">
+            Quick links <i class="fas fa-caret-down" aria-hidden="true"></i>
+          </button>
+          <div class="cash-quick-links-menu">
+            <a href="add_new_contect.html">Add Passenger/ Agent</a>
+            <a href="Contact_Book_Inquiry.html">Contact Book</a>
+            <a href="accounts.html">GL Reports</a>
+          </div>
+        </div>
+        <span class="cash-header-shortcut">Configuration</span>
+        <span class="cash-header-shortcut">Change password</span>
+        <button type="button" class="cash-header-logout" onclick="logoutUser()">
+          <i class="fas fa-key" aria-hidden="true"></i> Logout
+        </button>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="accountsSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content show">
+              <a class="sub-link" href="cash_received.html">Cash Receipt Voucher</a>
+              <a class="sub-link" href="cash_payment.html">Cash Payment Voucher</a>
+              <a class="sub-link" href="bank_received.html">Bank Receipt Voucher</a>
+              <a class="sub-link" href="bank_payment.html">Bank Payment Voucher</a>
+              <a class="sub-link active-page" href="bank_transfer.html">Bank to Bank Transfer</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard cash-received-dashboard">
+        <div class="cash-page-heading">
+          <a
+            href="ticket.html"
+            class="cash-back-link"
+            aria-label="Back to dashboard"
+          >
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          </a>
+          <h1>Bank to Bank Transfer</h1>
+        </div>
+
+        <section class="cash-entry-panel" aria-label="Bank transfer entry">
+          <div
+            id="bankTransferStatus"
+            class="cash-receipt-status"
+            role="status"
+            aria-live="polite"
+          ></div>
+          <div class="cash-entry-grid bank-transfer-fields">
+            <div class="cash-field-column">
+              <label class="cash-field">
+                <span>Date</span>
+                <input id="bankTransferDate" type="date" />
+              </label>
+              <label class="cash-field">
+                <span>Reference</span>
+                <input
+                  id="bankTransferReference"
+                  type="text"
+                  placeholder="Generating reference..."
+                  readonly
+                />
+              </label>
+            </div>
+            <div class="cash-field-column">
+              <label class="cash-field">
+                <span>Transfer From</span>
+                <select id="bankTransferFrom" disabled>
+                  <option value="">Loading bank accounts...</option>
+                </select>
+              </label>
+              <div class="cash-field cash-balance">
+                <span>Available Balance</span>
+                <strong id="bankTransferFromBalance">Select source account</strong>
+              </div>
+            </div>
+            <div class="cash-field-column">
+              <label class="cash-field">
+                <span>Transfer To</span>
+                <select id="bankTransferTo" disabled>
+                  <option value="">Loading bank accounts...</option>
+                </select>
+              </label>
+              <div class="cash-field cash-balance">
+                <span>Destination Balance</span>
+                <strong id="bankTransferToBalance">Select destination account</strong>
+              </div>
+            </div>
+          </div>
+          <div class="bank-transfer-details">
+            <label class="cash-field bank-transfer-amount">
+              <span>Transfer Amount</span>
+              <input
+                id="bankTransferAmount"
+                type="number"
+                min="0.01"
+                step="0.01"
+                inputmode="decimal"
+              />
+            </label>
+            <label class="cash-memo">
+              <span>Memo</span>
+              <textarea id="bankTransferMemo" rows="3"></textarea>
+            </label>
+            <div class="cash-submit-row">
+              <button
+                id="processBankTransfer"
+                type="button"
+                class="cash-action-button cash-process-button"
+              >
+                <i class="fas fa-right-left" aria-hidden="true"></i>
+                Process Bank Transfer
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="cash-section cash-today-section"
+          aria-labelledby="bankTransferHistoryHeading"
+        >
+          <h2 id="bankTransferHistoryHeading">Bank Transfer History</h2>
+          <div class="cash-table-scroll">
+            <table class="cash-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Reference</th>
+                  <th>Transfer From</th>
+                  <th>Transfer To</th>
+                  <th>Amount</th>
+                  <th>Memo</th>
+                </tr>
+              </thead>
+              <tbody id="bankTransferHistory">
+                <tr><td colspan="6">Loading bank transfers...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <div class="cash-back-button-row">
+          <a class="cash-action-button cash-back-button" href="accounts.html">
+            Back
+          </a>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div id="clock"></div>
+      <div class="badge">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+    <script>
+      document.getElementById("bankTransferDate").value = new Date()
+        .toISOString()
+        .slice(0, 10);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+.cash-payment-dashboard {
+  padding: 20px;
+  color: #26394a;
+}
+
+@media (max-width: 600px) {
+  .cash-payment-dashboard {
+    padding: 12px;
+  }
+}

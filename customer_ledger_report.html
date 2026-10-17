@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Ledger Entry</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="customers.css" />
+    <link rel="stylesheet" href="customer_ledger_report.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button>Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content">
+              <a href="Contact_Book_Inquiry.html">
+                <button class="sub-link">Contact Book</button>
+              </a>
+              <a href="query_inquiry.html">
+                <button class="sub-link">Query Inquiry</button>
+              </a>
+              <a href="temporary_booking.html">
+                <button class="sub-link">Temporary Booking</button>
+              </a>
+              <a href="ticket_booking.html">
+                <button class="sub-link">Ticket Booking</button>
+              </a>
+              <button class="sub-link">Ticket Inquiry</button>
+              <button class="sub-link">Service Inquiry</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Customer Invoices Inquiry</button>
+              <button class="sub-link">Customer Allocate Inquiry</button>
+              <a href="customers.html">
+                <button class="sub-link">Customers</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Add And Manage Customer</button>
+              <button class="sub-link">Customer Branches</button>
+              <button class="sub-link">Call Type</button>
+              <button class="sub-link">Query Status</button>
+              <button class="sub-link">Query Source</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard customers-content">
+        <section class="ledger-screen" aria-label="Customer ledger entry report">
+          <div class="voucher-toolbar">
+            <div class="voucher-label">VOUCHER</div>
+            <button class="voucher-sms" type="button" aria-label="SMS">
+              SMS
+            </button>
+            <div class="voucher-view-options">
+              <label><input type="checkbox" /> PDF-Excel View</label>
+              <label>
+                <input type="checkbox" /> Enable Foreign Currency (fc)
+              </label>
+            </div>
+            <button
+              type="button"
+              class="ledger-exit voucher-exit"
+              onclick="history.back()"
+            >
+              <i class="fas fa-door-open" aria-hidden="true"></i>
+              Exit
+            </button>
+          </div>
+
+          <div class="voucher-heading">
+            <h1 id="customerLedgerReportTitle">Ledger Entry</h1>
+            <a id="customerLedgerReportBack" href="customers.html">
+              Back to Ledger
+            </a>
+          </div>
+
+          <div class="voucher-summary">
+            <div class="voucher-number">
+              <label for="customerLedgerReportReference">Voucher No.</label>
+              <input id="customerLedgerReportReference" readonly />
+            </div>
+            <div class="voucher-date">
+              <label for="customerLedgerReportDate">Date</label>
+              <input id="customerLedgerReportDate" readonly />
+            </div>
+            <button type="button" class="voucher-action" onclick="window.print()">
+              <i class="fas fa-file-lines" aria-hidden="true"></i>
+              Receipt Preview
+            </button>
+            <button type="button" class="voucher-action" onclick="window.print()">
+              <i class="fas fa-print" aria-hidden="true"></i>
+              Receipt Print
+            </button>
+            <div class="voucher-totals">
+              <div>
+                <span>Debit Total</span>
+                <strong id="customerLedgerReportDebitTotal">0.00</strong>
+              </div>
+              <div>
+                <span>Credit Total</span>
+                <strong id="customerLedgerReportCreditTotal">0.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <p
+            id="customerLedgerReportStatus"
+            class="voucher-status"
+            role="status"
+          >
+            Preparing voucher...
+          </p>
+          <input
+            id="customerLedgerReportAccount"
+            class="voucher-account-heading"
+            readonly
+            aria-label="Voucher account"
+          />
+
+          <div class="voucher-table-wrap">
+            <table class="voucher-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Db/Cr</th>
+                  <th>Description</th>
+                  <th>Segregation</th>
+                  <th>Receipt #</th>
+                  <th>Chq. No.</th>
+                  <th>Amount</th>
+                  <th>Posting Date</th>
+                  <th>In Sale Reports</th>
+                  <th>CR No.</th>
+                  <th>Ledger</th>
+                </tr>
+              </thead>
+              <tbody id="customerLedgerReportDetails">
+                <tr><td colspan="11">Preparing voucher details...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <footer class="voucher-footer">
+            <div>
+              <strong>Enter by</strong>
+              <span id="customerLedgerReportCreatedBy">-</span>
+              <span id="customerLedgerReportTimestamp">-</span>
+            </div>
+            <a id="customerLedgerReportBackFooter" href="customers.html">
+              Back to Ledger
+            </a>
+            <button type="button" class="ledger-exit" onclick="history.back()">
+                Exit
+            </button>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

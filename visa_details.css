@@ -1,0 +1,314 @@
+body {
+    margin: 0;
+    background: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.company-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #2b99b9;
+    background: #fff;
+}
+
+.header-link {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+}
+
+.company-logo {
+    width: auto;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.company-name {
+    color: #1b7b9e;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    background: #2b99b9;
+    color: #fff;
+    font-size: 12px;
+}
+
+.nav-left {
+    display: flex;
+}
+
+.nav-left a {
+    text-decoration: none;
+}
+
+.nav-left button {
+    padding: 3px 10px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-left button:hover {
+    border-color: #fff;
+}
+
+.nav-right span {
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.logout {
+    color: #ff0;
+    font-weight: bold;
+}
+
+.main-container {
+    display: flex;
+    min-height: calc(100vh - 100px);
+}
+
+.sidebar {
+    flex: 0 0 200px;
+    width: 200px;
+    padding: 10px 0;
+    background: #1b7b9e;
+    color: #fff;
+}
+
+.menu-head {
+    display: block;
+    width: 90%;
+    margin: 0 auto 5px;
+    padding: 8px;
+    border: 1px solid #1b7b9e;
+    background: #15617d;
+    color: #fff;
+    text-align: left;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.menu-head.active {
+    background: #00aeef;
+    font-weight: bold;
+}
+
+.menu-content {
+    display: none;
+    margin-bottom: 10px;
+    background: #1b7b9e;
+}
+
+.menu-content.show {
+    display: block;
+}
+
+.menu-content a {
+    text-decoration: none;
+}
+
+.menu-content button {
+    width: 100%;
+    padding: 6px 20px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    text-align: left;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.menu-content button:hover {
+    background: #15617d;
+}
+
+.main-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-y: auto;
+    background: #fff;
+}
+
+.inner-header {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #1b7b9e;
+}
+
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .top-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-right {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+.sidebar .sub-link.active-page {
+    background: #00aeef;
+    color: #fff;
+    font-weight: bold;
+}
+
+.visa-category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 15px 20px 10px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.visa-category-tab {
+    min-height: 30px;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    background: #fff;
+    color: #001e8a;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.visa-category-tab:hover,
+.visa-category-tab:focus-visible {
+    border-color: #ddd;
+}
+
+.visa-category-tab.active {
+    border: 1px solid #ddd;
+    border-bottom-color: #fff;
+    color: #333;
+    cursor: default;
+}
+
+.visa-category-empty {
+    margin: 12px 20px;
+    padding: 18px;
+    border: 1px solid #ddd;
+    color: #666;
+    text-align: center;
+}
+
+.visa-category-empty[hidden] {
+    display: none;
+}
+
+/* Accordion Styling */
+.accordion {
+    margin: 0 20px;
+}
+
+.accordion-item {
+    margin-bottom: 2px;
+}
+
+.accordion-header {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px 40px;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.visa-type h4 {
+    color: #000;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.doc-list {
+    list-style: none;
+    padding-left: 20px;
+    font-size: 13px;
+    line-height: 1.8;
+    font-weight: bold;
+}
+
+.price {
+    text-decoration: underline;
+}
+
+.visa-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+/* Header: Greyish Blue style */
+.visa-table thead tr {
+    background-color: #8c9fb1; 
+    color: white;
+}
+
+.visa-table th {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Table Rows */
+.visa-table td {
+    padding: 8px 10px;
+    border: 1px solid #eee;
+    font-size: 12px;
+    color: #333;
+}
+
+/* Center Icons */
+.icon-col {
+    width: 40px;
+    text-align: center;
+}
+
+/* Footer checkbox section */
+.footer-check {
+    padding: 10px;
+    background: #fcfcfc;
+    border: 1px solid #ddd;
+    border-top: none;
+    font-size: 12px;
+}
+
+/* Row Hover effect */
+.visa-table tbody tr:hover {
+    background-color: #f9f9f9;
+}

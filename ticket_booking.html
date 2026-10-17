@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Imam Travels - Invoice Entry</title>
+    <link rel="stylesheet" href="ticket_booking.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button class="active">Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content show">
+              <a href="Contact_Book_Inquiry.html"
+                ><button class="sub-link">Contact Book</button></a
+              >
+              <a href="query_inquiry.html"
+                ><button class="sub-link">Query Inquiry</button></a
+              >
+              <a href="temporary_booking.html"
+                ><button class="sub-link">Temporary Booking</button></a
+              >
+              <a href="ticket_booking.html"
+                ><button class="sub-link">Ticket Booking</button></a
+              >
+              <button class="sub-link">Ticket Inquiry</button>
+              <button class="sub-link">Service Inquiry</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Customer Invoices Inquiry</button>
+              <button class="sub-link">Customer Allocate Inquiry</button>
+              <a href="customers.html">
+                <button class="sub-link">Customers</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Add And Manage Customer</button>
+              <button class="sub-link">Customer Branches</button>
+              <button class="sub-link">Call Type</button>
+              <button class="sub-link">Query Status</button>
+              <button class="sub-link">Query Source</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content content">
+        <div class="page-title">Direct Purchase Invoice Entry</div>
+        <div
+          id="ticket-validation-message"
+          class="ticket-validation-message"
+          role="alert"
+          aria-live="polite"
+          hidden
+        ></div>
+
+        <div class="info-grid">
+          <div class="box customer-box">
+            <div class="box-header">Customer Data</div>
+            <div class="row">
+              <label>Type:</label>
+              <select id="type">
+                <option>Ticket</option>
+                <option>Service</option>
+                <option>Both</option>
+              </select>
+            </div>
+            <div class="row">
+              <label>Client Type:</label>
+              <select
+                id="cust_type"
+                onchange="handleClientTypeChange(this.value)"
+              >
+                <option>Passenger</option>
+                <option>Agent</option>
+              </select>
+              <button
+                type="button"
+                onclick="location.href = 'add_new_contect.html'"
+              >
+                +
+              </button>
+            </div>
+            <div class="row">
+              <label>Family Head:</label>
+              <input
+                type="text"
+                id="invoice_family_head"
+                placeholder="Select Family Head"
+                autocomplete="off"
+                onclick="showFamilyHeadSearch()"
+                oninput="filterFamilyHeads(this.value)"
+              />
+              <button
+                type="button"
+                onclick="showFamilyHeadSearch()"
+                title="Search Family Head"
+              >
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+            <div id="family_head_results" class="family-head-results"></div>
+
+            <div id="family_details_box" class="family-details-yellow">
+              <table>
+                <tr>
+                  <td id="disp_name" style="font-weight: bold">-</td>
+                  <td id="disp_passport">-</td>
+                  <td id="disp_dob">-</td>
+                  <td id="disp_expiry">-</td>
+                </tr>
+              </table>
+            </div>
+
+            <div class="row" style="margin-top: 10px">
+              <label>Current Credit:</label>
+              <span class="credit-val">0.00</span>
+            </div>
+            <div class="row">
+              <label>Passenger Reference:</label>
+              <input type="text" id="pass_ref" />
+            </div>
+          </div>
+
+          <div class="box dates-box">
+            <div class="box-header">Dates</div>
+            <div class="row">
+              <label>Invoice Date:</label>
+              <input type="date" id="invoice_date" class="calendar-input" />
+            </div>
+            <div class="row">
+              <label>Travel Date:</label>
+              <input
+                type="date"
+                id="travel_date"
+                class="calendar-input"
+                value="2026-09-21"
+              />
+            </div>
+            <div class="row">
+              <label>Show Return Date</label>
+              <input
+                type="checkbox"
+                id="show_return_date"
+                data-detail-target="return_date_details"
+              />
+            </div>
+            <div class="row">
+              <label>Show Void Details</label>
+              <input
+                type="checkbox"
+                id="show_void_details"
+                data-detail-target="void_details"
+              />
+            </div>
+            <div class="row">
+              <label>Show Refund Details</label>
+              <input
+                type="checkbox"
+                id="show_refund_details"
+                data-detail-target="refund_details"
+              />
+            </div>
+          </div>
+
+          <div class="box supplier-box">
+            <div class="box-header">Supplier Data</div>
+            <div class="row">
+              <label>Supplier:</label>
+              <select id="supplier_select">
+                <option value="">Loading vendors...</option>
+              </select>
+              <button type="button" onclick="location.href = 'add_new_contect.html?category=New%20Vendor'">
+                +
+              </button>
+            </div>
+            <div class="row">
+              <label>Current Credit:</label>
+              <span class="credit-val blue">0.00</span>
+            </div>
+            <div class="row">
+              <label>Supplier's Reference:</label> <input type="text" />
+            </div>
+          </div>
+        </div>
+
+        <div
+          id="return_date_details"
+          class="invoice-detail-row return-date-details"
+        >
+          <label>Return Date:</label>
+          <input
+            type="date"
+            id="return_date"
+            class="calendar-input"
+            value="2026-09-21"
+          />
+        </div>
+
+        <div
+          id="void_details"
+          class="invoice-detail-row detail-fields void-details"
+        >
+          <div><label>Air Void Chg:</label><input type="text" /></div>
+          <div><label>Pax Void Chg:</label><input type="text" /></div>
+          <div><label>Void Remarks:</label><textarea></textarea></div>
+          <div>
+            <label>Void Date:</label
+            ><input type="date" class="calendar-input" />
+          </div>
+        </div>
+
+        <div
+          id="refund_details"
+          class="invoice-detail-row detail-fields refund-details"
+        >
+          <div><label>Air Ref Chg:</label><input type="text" /></div>
+          <div><label>Pax Ref Deal:</label><input type="text" /></div>
+          <div><label>Ref Remarks:</label><textarea></textarea></div>
+          <div>
+            <label>Ref Date:</label><input type="date" class="calendar-input" />
+          </div>
+        </div>
+
+        <div class="ticket-section">
+          <div class="section-label">Ticket</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Passenger</th>
+                  <th>Ticket Type</th>
+                  <th>Ticket No</th>
+                  <th>Route</th>
+                  <th>Carrier</th>
+                  <th>Class</th>
+                  <th>Airline PNR</th>
+                  <th>GDS PNR</th>
+                  <th>Fare</th>
+                  <th>Taxes</th>
+                  <th>Total Fare</th>
+                  <th>Sales</th>
+                  <th>Add Item</th>
+                </tr>
+              </thead>
+              <tbody id="ticketRows">
+                <tr class="ticket-entry-input-row">
+                  <td>
+                    <select
+                      id="ticket_passenger"
+                      class="ticket-passenger-select"
+                      style="width: 100%"
+                    >
+                      <option value="">Select Passenger</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select onchange="handleTicketTypeChange(this)">
+                      <option>Ticket No</option>
+                      <option>Auto Ticket No</option>
+                      <option>Group Ticket</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="ticket-number-input"
+                      style="width: 100%"
+                      autocomplete="off"
+                    />
+                  </td>
+                  <td><input type="text" style="width: 100%" /></td>
+                  <td>
+                    <select style="width: 100%">
+                      <option>AIRLINE</option>
+                      <option>9P</option>
+                      <option>CZ</option>
+                      <option>EK</option>
+                      <option>ER</option>
+                      <option>EY</option>
+                      <option>FZ</option>
+                      <option>G9</option>
+                      <option>G9</option>
+                      <option>GF</option>
+                      <option>J9</option>
+                      <option>MH</option>
+                      <option>OD</option>
+                      <option>OV</option>
+                      <option>PA</option>
+                      <option>PC</option>
+                      <option>PF</option>
+                      <option>PK</option>
+                      <option>QR</option>
+                      <option>SV</option>
+                      <option>TG</option>
+                      <option>TK</option>
+                      <option>UL</option>
+                      <option>WY</option>
+                      <option>XY</option>
+                    </select>
+                  </td>
+                  <td><input type="text" style="width: 100%" /></td>
+                  <td>
+                    <input
+                      type="text"
+                      class="ticket-airline-pnr-input"
+                      style="width: 100%"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      class="ticket-gds-pnr-input"
+                      style="width: 100%"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      inputmode="decimal"
+                      class="ticket-fare-input"
+                      value="0.00"
+                      style="width: 100%"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      inputmode="decimal"
+                      class="ticket-tax-input"
+                      value="0.00"
+                      style="width: 100%"
+                    />
+                  </td>
+                  <td class="amount ticket-total-fare">0.00</td>
+                  <td>
+                    <input
+                      type="text"
+                      inputmode="decimal"
+                      class="ticket-sales-input"
+                      value="0.00"
+                      style="width: 100%"
+                    />
+                  </td>
+                  <td class="add-item-cell" rowspan="5">
+                    <button
+                      type="button"
+                      class="add-item-button"
+                      onclick="addTicketItem()"
+                    >
+                      Add Item
+                    </button>
+                  </td>
+                </tr>
+                <tr class="summary-row">
+                  <th class="sale-label">Sub-total(Sale)</th>
+                  <td class="red amount">0.00</td>
+                  <td colspan="2"></td>
+                  <th>Service.Charg(%) (Before Disc.)</th>
+                  <td class="amount">0.00</td>
+                  <th>Serv.Amt. (Before Disc.)</th>
+                  <td class="amount">0.00</td>
+                  <td colspan="2"></td>
+                  <th>Sub-total(Purchase)</th>
+                  <td class="amount purchase-amount">0.00</td>
+                </tr>
+                <tr class="summary-row">
+                  <th>Disc %</th>
+                  <td>
+                    <input
+                      type="number"
+                      class="ticket-discount-percent"
+                      value="0.00"
+                    />
+                  </td>
+                  <td colspan="8">
+                    <div class="summary-seven-pieces">
+                      <span></span><span></span><span></span><span></span>
+                      <span></span><span></span><span></span>
+                    </div>
+                  </td>
+                  <th>Supp Comm.%</th>
+                  <td><input type="number" value="0.00" /></td>
+                </tr>
+                <tr class="summary-row">
+                  <th>Disc Amt.</th>
+                  <td><input type="number" value="0.00" /></td>
+                  <td colspan="8">
+                    <div class="summary-seven-pieces">
+                      <span></span><span></span><span></span><span></span>
+                      <span></span><span></span><span></span>
+                    </div>
+                  </td>
+                  <th>Supp Amt.</th>
+                  <td><input type="number" value="0.00" /></td>
+                </tr>
+                <tr class="summary-row total-row">
+                  <th class="amount-total-label">Amount Total</th>
+                  <td class="red amount">0.00</td>
+                  <td>
+                    <button type="button" class="update-ticket-button">
+                      Update
+                    </button>
+                  </td>
+                  <td></td>
+                  <th>Service.Charg(%) (After Disc.)</th>
+                  <td class="amount">0.00</td>
+                  <th>Serv.Amt. (After Disc.)</th>
+                  <td class="amount">0.00</td>
+                  <td colspan="2"></td>
+                  <th class="purchase-total-label">Amount Total</th>
+                  <td class="amount purchase-amount">0.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="payment-area">
+          <div class="payment-row">
+            <label>Payment:</label
+            ><select>
+              <option>Cash in hand</option>
+              <option>Bank Transfer</option>
+              <option>Delayed</option>
+            </select>
+          </div>
+          <div class="memo-row"><label>Memo:</label><textarea></textarea></div>
+        </div>
+
+        <div class="footer-actions">
+          <button class="btn-process">
+            <i class="fa fa-check"></i> Process Invoice
+          </button>
+          <button class="btn-cancel">Cancel Invoice</button>
+          <button class="btn-back">Back</button>
+        </div>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

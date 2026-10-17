@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Agency Company</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      class="logo-circle"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel Company</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button class="active">Ticket Service</button></a>
+
+        <a href="service.html"><button>Visa Service</button></a>
+
+        <a href="accounts.html"><button>Accounts</button></a>
+
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content show">
+              <a href="Contact_Book_Inquiry.html"
+                ><button class="sub-link">Contact Book</button></a
+              >
+              <a href="query_inquiry.html"
+                ><button class="sub-link">Query Inquiry</button></a
+              >
+              <a href="temporary_booking.html">
+                <button class="sub-link">Temporary Booking</button>
+              </a>
+              <a href="ticket_booking.html">
+                <button class="sub-link">Ticket Booking</button>
+              </a>
+              <button class="sub-link">Ticket Inquiry</button>
+              <button class="sub-link">Service Inquiry</button>
+              <a href="ummrah.html">
+                <button class="sub-link">Ummrah Inquiry</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Customer Invoices Inquiry</button>
+              <button class="sub-link">Customer Allocate Inquiry</button>
+              <a href="customers.html">
+                <button class="sub-link">Customers</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Add And Manage Customer</button>
+              <button class="sub-link">Customer Branches</button>
+              <button class="sub-link">Call Type</button>
+              <button class="sub-link">Query Status</button>
+              <button class="sub-link">Query Source</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard ticket-dashboard">
+        <div class="tabs">
+          <button class="tab active">Home</button>
+          <button class="tab">Dashboard</button>
+          <button class="tab">To Do</button>
+          <details class="notification-menu">
+            <summary aria-label="Notifications" title="Notifications">
+              <i class="fas fa-bell" aria-hidden="true"></i>
+              <span class="notification-count" hidden></span>
+            </summary>
+            <div class="notification-popup" role="status">
+              <strong>Notifications</strong>
+              <p>No new notifications</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="grid-container">
+          <button
+            class="finance-shortcut shortcut-cash-received"
+            type="button"
+            aria-label="Cash Received"
+            onclick="window.location.href = 'cash_received.html'"
+          >
+            <i class="fas fa-wallet" aria-hidden="true"></i>
+            <span>Cash Received</span>
+          </button>
+
+          <div class="finance-shortcuts" aria-label="Finance shortcuts">
+            <button
+              class="finance-shortcut shortcut-cash-payment"
+              type="button"
+              aria-label="Cash Payment"
+              onclick="window.location.href = 'cash_payment.html'"
+            >
+              <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+              <span>Cash Payment</span>
+            </button>
+            <button
+              class="finance-shortcut shortcut-bank-received"
+              type="button"
+              aria-label="Bank Received"
+              onclick="window.location.href = 'bank_received.html'"
+            >
+              <i class="fas fa-building-columns" aria-hidden="true"></i>
+              <span>Bank Received</span>
+            </button>
+            <button
+              class="finance-shortcut shortcut-bank-payment"
+              type="button"
+              aria-label="Bank Payment"
+              onclick="window.location.href = 'bank_payment.html'"
+            >
+              <i class="fas fa-landmark" aria-hidden="true"></i>
+              <span>Bank Payment</span>
+            </button>
+            <button
+              class="finance-shortcut shortcut-bank-transfer"
+              type="button"
+              aria-label="Bank to Bank Transfer"
+              onclick="window.location.href = 'bank_transfer.html'"
+            >
+              <i class="fas fa-right-left" aria-hidden="true"></i>
+              <span>Bank Transfer</span>
+            </button>
+            <button
+              class="finance-shortcut shortcut-customers"
+              type="button"
+              aria-label="Add Customers"
+              onclick="window.location.href = 'add_new_contect.html'"
+            >
+              <i class="fas fa-users" aria-hidden="true"></i>
+              <span>Add Customers</span>
+            </button>
+            <button
+              class="finance-shortcut shortcut-ledger"
+              type="button"
+              aria-label="Customer Ledger"
+              onclick="window.location.href = 'customers.html'"
+            >
+              <i class="fas fa-book-open" aria-hidden="true"></i>
+              <span>Customer Ledger</span>
+            </button>
+
+            <button
+              class="finance-shortcut shortcut-day-book"
+              type="button"
+              aria-label="Day Book"
+              onclick="window.location.href = 'day_book.html'"
+            >
+              <i class="fas fa-book" aria-hidden="true"></i>
+              <span>Day Book</span>
+            </button>
+
+            <button
+              class="finance-shortcut shortcut-calendar"
+              type="button"
+              aria-label="Calendar"
+              onclick="window.location.href = 'calendar.html'"
+            >
+              <i class="fas fa-calendar-days" aria-hidden="true"></i>
+              <span>Calendar</span>
+            </button>
+
+            <button
+              class="finance-shortcut shortcut-ticket-refund"
+              type="button"
+              aria-label="Ticket Refund"
+            >
+              <i class="fas fa-rotate-left" aria-hidden="true"></i>
+              <span>Ticket Refund</span>
+            </button>
+          </div>
+
+          <div
+            class="item"
+            id="userAccountsItem"
+            aria-label="User Accounts"
+            data-tooltip="User Accounts"
+            style="cursor: pointer"
+            onclick="window.location.href = 'user_accounts.html'"
+          >
+            <i class="fas fa-user-circle text-blue"></i>
+            <span>User Accounts</span>
+          </div>
+
+          <div
+            class="item"
+            id="suppliersItem"
+            aria-label="Suppliers"
+            data-tooltip="Suppliers"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-truck text-gray"></i>
+            <span>Suppliers</span>
+          </div>
+
+          <div
+            class="item"
+            id="categoryItem"
+            aria-label="Category"
+            data-tooltip="Category"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-layer-group text-yellow"></i>
+            <span>Category</span>
+          </div>
+
+          <div
+            class="item"
+            id="itemsItem"
+            aria-label="Items"
+            data-tooltip="Items"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-box text-orange"></i>
+            <span>Items</span>
+          </div>
+
+          <div
+            class="item"
+            id="measureItem"
+            aria-label="Measure"
+            data-tooltip="Measure"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-ruler-combined text-cyan"></i>
+            <span>Measure</span>
+          </div>
+
+          <div
+            class="item"
+            id="brandsItem"
+            aria-label="Brands"
+            data-tooltip="Brands"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-tag text-orange"></i>
+            <span>Brands</span>
+          </div>
+
+          <div
+            class="item"
+            id="searchRateItem"
+            aria-label="Search Rate"
+            data-tooltip="Search Rate"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-chart-line text-red"></i>
+            <span>Search Rate</span>
+          </div>
+
+          <div
+            class="item"
+            id="servicesItem"
+            aria-label="Services"
+            data-tooltip="Services"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-concierge-bell text-blue"></i>
+            <span>Services</span>
+          </div>
+
+          <div
+            class="item"
+            id="chartOfAccountsItem"
+            aria-label="Chart of Accounts"
+            data-tooltip="Chart of Accounts"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-sitemap text-blue"></i>
+            <span>Chart of Accounts</span>
+          </div>
+
+          <div
+            class="item"
+            id="expenseAccountsItem"
+            aria-label="Expense Accounts"
+            data-tooltip="Expense Accounts"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-file-invoice-dollar text-teal"></i>
+            <span>Expense Accounts</span>
+          </div>
+
+          <div
+            class="item"
+            id="miscSettingsItem"
+            aria-label="Misc. Settings"
+            data-tooltip="Misc. Settings"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-cog text-orange"></i>
+            <span>Misc. Settings</span>
+          </div>
+
+          <div
+            class="item"
+            id="shortcutsLinksItem"
+            aria-label="Shortcuts Links"
+            data-tooltip="Shortcuts Links"
+            style="cursor: pointer"
+            onclick="window.location.href = ''"
+          >
+            <i class="fas fa-link text-cyan"></i>
+            <span>Shortcuts Links</span>
+          </div>
+        </div>
+
+        <aside id="lastEntryCard" class="last-entry-card" aria-live="polite">
+          <span class="last-entry-label">LAST ENTRY</span>
+          <time id="lastEntryDateTime"></time>
+          <strong id="lastEntryDescription">Loading recent payments...</strong>
+        </aside>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div id="clock">18/04/2026 | 17:01</div>
+      <div class="badge">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

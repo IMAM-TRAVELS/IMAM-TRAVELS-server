@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Imam Travel and Tours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="user.css">
+    <link rel="stylesheet" href="user_accounts.css">
+    <link rel="stylesheet" href="theme.css">
+    <link rel="icon" class="logo-circle" type="image/x-icon" href="imam_travel_and_tours_logo.jpeg">
+ <script src="auth-guard.js"></script>
+</head>
+<body>
+
+    <header class="company-header">
+        <a href="ticket.html" class="header-link">
+            <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo">
+            <span class="company-name">Imam Travel and Tours</span>
+        </a>
+    </header>
+
+    <nav class="top-nav user-container user-management-nav">
+        <div class="nav-left">
+            <a href="ticket.html"><button>Ticket Service</button></a>
+            <a href="service.html"><button>Visa Service</button></a>
+            <a href="accounts.html"><button>Accounts</button></a>
+            <a href="user.html"><button class="active">User</button></a>
+        </div>
+        <div class="nav-right">
+            <span>Quick links <i class="fas fa-caret-down"></i></span>
+            <span>Configuration</span>
+            <span>Change password</span>
+            <span class="logout" onclick="logoutUser()" style="cursor: pointer;">
+                <i class="fas fa-key"></i> Logout
+            </span>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div id="ticketSidebar">
+                <div class="menu-group">
+                    <button class="menu-head active" onclick="toggleMenu('userManagementMenu')">
+                        User Management <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div id="userManagementMenu" class="menu-content show">
+                        <a href="user_accounts.html"><button class="sub-link active-page" aria-current="page">All Users</button></a>
+                        <a href="user.html"><button class="sub-link">User Setup</button></a>
+                    </div>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-head" onclick="toggleMenu('userRightsMenu')">
+                        User Rights Setup <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div id="userRightsMenu" class="menu-content">
+                        <a href="user.html"><button class="sub-link">User Wise GL Accounts</button></a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="dashboard user-container">
+        <header class="user-header">
+            <h2><i class="fas fa-users-cog"></i> User Management</h2>
+            <div class="action-group">
+                <button id="loadDataBtn" class="show-data-btn"><i class="fas fa-sync-alt"></i> Show Live Data</button>
+                <button class="add-btn" onclick="openAddModal()" hidden>
+                    <i class="fas fa-user-plus"></i> Add New User
+                </button>
+                
+                <div id="addUserModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3><i class="fas fa-user-plus"></i> Add New User</h3>
+                            <span class="close-modal" onclick="closeAddModal()">&times;</span>
+                        </div>
+                        <form id="addUserForm">
+                            <div class="form-group">
+                                <label for="add_user_type">User Type</label>
+                                <select id="add_user_type" required>
+                                    <option value="">Select Owner or Agent</option>
+                                    <option value="Owner">Owner</option>
+                                    <option value="Agent">Agent</option>
+                                </select>
+                            </div>
+                            <div id="addUserDetails" hidden>
+                                <div class="form-group">
+                                    <label for="add_username">Username</label>
+                                    <input type="text" id="add_username" autocomplete="username" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="add_email">Email Address</label>
+                                    <input type="email" id="add_email" autocomplete="email" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="add_password">Password</label>
+                                    <input type="password" id="add_password" autocomplete="new-password" minlength="12" required disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="add_companyid">Company ID</label>
+                                    <input type="text" id="add_companyid" autocomplete="organization" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="add_salary">Salary</label>
+                                    <input type="number" id="add_salary" min="0" step="0.01" inputmode="decimal" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="add_role">System Role</label>
+                                    <select id="add_role" disabled>
+                                        <option value="admins">Admin</option>
+                                        <option value="workers" selected>Worker</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="addAgentParentField" class="form-group" hidden>
+                                <label for="add_agent_parent">Select Agent</label>
+                                <select id="add_agent_parent" disabled>
+                                    <option value="">Select an agent</option>
+                                </select>
+                                <span id="addAgentParentStatus" role="status" aria-live="polite"></span>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-cancel" onclick="closeAddModal()">Cancel</button>
+                                <button type="submit" class="btn-save">Create User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="user-table-wrapper">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>User Details</th>
+                        <th>Email Address</th>
+                        <th>Company Id</th>
+                        <th>User Type</th>
+                        <th>Salary</th>
+                        <th>System Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    <tr><td colspan="8" style="text-align:center; padding:20px;">Click "Show Live Data" to view users.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        </main>
+    </div>
+
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-edit"></i> Edit User Account</h3>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="editUserForm">
+                <input type="hidden" id="edit_user_path"> <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="edit_username" autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="edit_email" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="edit_user_type">User Type</label>
+                    <select id="edit_user_type">
+                        <option value="">Select Owner or Agent</option>
+                        <option value="Owner">Owner</option>
+                        <option value="Agent">Agent</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Company ID</label>
+                    <input type="text" id="edit_companyid" autocomplete="organization">
+                </div>
+                <div class="form-group">
+                    <label for="edit_salary">Salary</label>
+                    <input type="number" id="edit_salary" min="0" step="0.01" inputmode="decimal">
+                </div>
+                <div class="form-group">
+                    <label>System Role</label>
+                    <select id="edit_role">
+                        <option value="admins">Admin</option>
+                        <option value="workers">Worker</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit_password">Set initial password for legacy account</label>
+                    <input type="password" id="edit_password" autocomplete="new-password" minlength="12" placeholder="Only needed to migrate a legacy account">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button type="button" class="btn-cancel" id="sendPasswordResetButton">Send Password Reset Email</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+.customer-ledger-account-row {
+  grid-template-columns: 0.75fr 2fr 1.5fr 0.9fr;
+}
+
+.customer-ledger-account-row input[readonly] {
+  background: #f7f7f7;
+}
+
+.customer-ledger-back {
+  color: #0000aa;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.customer-ledger-table-wrap {
+  overflow: auto;
+}
+
+@media (max-width: 760px) {
+  .customer-ledger-account-row {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+  }
+}

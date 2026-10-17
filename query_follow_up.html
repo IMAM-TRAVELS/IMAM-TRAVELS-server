@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Follow-up</title>
+    <link rel="stylesheet" href="query_inquiry.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body class="follow-up-page">
+    <main class="follow-up-window">
+      <header class="follow-up-header">
+        <h1>Query Follow-up</h1>
+      </header>
+      <div class="follow-up-query">Loading query...</div>
+      <div class="follow-up-entry-labels" aria-hidden="true">
+        <span>Follow-up Date</span>
+        <span>Message</span>
+        <span>Saved By</span>
+        <span>Saved At</span>
+      </div>
+      <div class="follow-up-history" aria-live="polite">
+        Loading follow-up history...
+      </div>
+      <form id="follow-up-form" class="follow-up-form">
+        <label for="follow-up-date">Date:</label>
+        <input type="date" id="follow-up-date" required />
+        <label for="follow-up-comment">Comments:</label>
+        <textarea id="follow-up-comment" rows="4" required></textarea>
+        <div class="follow-up-actions">
+          <button type="submit" class="btn-follow-up-save">Add new</button>
+          <button type="button" class="btn-follow-up-close" onclick="window.close()">
+            Back
+          </button>
+        </div>
+        <p class="follow-up-status" role="status" aria-live="polite"></p>
+      </form>
+    </main>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

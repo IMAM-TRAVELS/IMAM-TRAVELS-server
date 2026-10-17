@@ -1,0 +1,32 @@
+.bank-transfer-fields {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.bank-transfer-details {
+  padding: 12px;
+  border-top: 1px solid #d2d8dd;
+}
+
+.bank-transfer-amount {
+  width: min(460px, 100%);
+  margin: 0 auto;
+}
+
+.bank-transfer-details .cash-memo {
+  margin-top: 12px;
+}
+
+.cash-table td {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .bank-transfer-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .cash-field-column {
+    border-right: 0;
+    border-bottom: 1px solid #d2d8dd;
+  }
+}

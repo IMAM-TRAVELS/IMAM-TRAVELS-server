@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="banks.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <title>Bank Management | Imam Travel</title>
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <div class="main-container">
+      <main class="dashboard">
+        <h2>Add/Manage Bank & Transactions</h2>
+
+        <div class="form-section">
+          <input type="text" id="bankName" placeholder="Bank Name" />
+          <input type="text" id="accNumber" placeholder="Account Number" />
+          <button onclick="addBank()">Add Bank</button>
+        </div>
+
+        <div class="form-section">
+          <h3>New Transaction</h3>
+          <select id="clientSelect"></select>
+          <input type="number" id="amount" placeholder="Amount" />
+          <select id="transType">
+            <option value="Credit">Credit (Received)</option>
+            <option value="Debit">Debit (Sent)</option>
+          </select>
+          <button onclick="addTransaction()">Save Record</button>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Client</th>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Bank</th>
+            </tr>
+          </thead>
+          <tbody id="transBody"></tbody>
+        </table>
+      </main>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

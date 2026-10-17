@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Ledger</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="customers.css" />
+    <link rel="stylesheet" href="customers_ledger.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button>Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content">
+              <a href="Contact_Book_Inquiry.html">
+                <button class="sub-link">Contact Book</button>
+              </a>
+              <a href="query_inquiry.html">
+                <button class="sub-link">Query Inquiry</button>
+              </a>
+              <a href="temporary_booking.html">
+                <button class="sub-link">Temporary Booking</button>
+              </a>
+              <a href="ticket_booking.html">
+                <button class="sub-link">Ticket Booking</button>
+              </a>
+              <button class="sub-link">Ticket Inquiry</button>
+              <button class="sub-link">Service Inquiry</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Customer Invoices Inquiry</button>
+              <button class="sub-link">Customer Allocate Inquiry</button>
+              <a href="customers.html">
+                <button class="sub-link">Customers</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Add And Manage Customer</button>
+              <button class="sub-link">Customer Branches</button>
+              <button class="sub-link">Call Type</button>
+              <button class="sub-link">Query Status</button>
+              <button class="sub-link">Query Source</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard customers-content">
+        <section class="ledger-screen" aria-label="Customer ledger">
+          <div class="ledger-toolbar">
+            <div class="ledger-toolbar-actions">
+              <button type="button" class="ledger-tab active">Complete Ledger</button>
+              <button type="button" class="ledger-tab">Only Pending Invoices</button>
+              <button type="button" class="ledger-tab ledger-printer">
+                <i class="fas fa-cog" aria-hidden="true"></i> Printer Setup
+              </button>
+            </div>
+            <div class="ledger-toolbar-links">
+              <span id="customerLedgerDate" class="ledger-date"></span>
+              <a href="#" onclick="return false;">Client Outstanding</a>
+              <a
+                id="customerLedgerBack"
+                class="customer-ledger-back"
+                href="customers.html"
+              >
+                Back to Customers
+              </a>
+              <button type="button" class="ledger-exit" onclick="history.back()">
+                Exit
+              </button>
+            </div>
+          </div>
+
+          <div class="ledger-filters">
+            <div class="ledger-account-row customer-ledger-account-row">
+              <label class="ledger-field">
+                <span>Acc. Code</span>
+                <input id="customerLedgerCode" type="text" readonly />
+              </label>
+              <label class="ledger-field">
+                <span>Account Head</span>
+                <input id="customerLedgerAccount" type="text" readonly />
+              </label>
+              <div class="ledger-options">
+                <label id="customerLedgerBalanceNote">
+                  Sales are debits; receipts are credits.
+                </label>
+              </div>
+              <label class="ledger-field">
+                <span>City</span>
+                <input id="customerLedgerCity" type="text" readonly />
+              </label>
+            </div>
+          </div>
+
+          <div class="ledger-table-wrap customer-ledger-table-wrap">
+            <table class="ledger-table customer-ledger-table">
+              <thead>
+                <tr>
+                  <th>SL</th>
+                  <th>V.TP</th>
+                  <th>DATE</th>
+                  <th>NO.</th>
+                  <th>Tkt # / R.No.</th>
+                  <th>PNR</th>
+                  <th>PASSPORT #</th>
+                  <th>DESCRIPTION</th>
+                  <th>DEBIT</th>
+                  <th>CREDIT</th>
+                  <th>BALANCE</th>
+                  <th>TP</th>
+                  <th>AGEING</th>
+                </tr>
+              </thead>
+              <tbody id="customerLedgerEntries">
+                <tr><td colspan="13">Loading customer ledger...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <footer class="ledger-footer">
+            <div class="ledger-footer-actions">
+              <button id="customerLedgerGenerate" type="button">
+                <i class="fas fa-file-alt" aria-hidden="true"></i><span>Generate</span>
+              </button>
+              <button id="customerLedgerRefresh" type="button">
+                <i class="fas fa-sync-alt" aria-hidden="true"></i><span>Refresh</span>
+              </button>
+              <button type="button">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i><span>Change Date</span>
+              </button>
+              <button type="button" class="ledger-export" aria-label="Export to PDF">
+                <i class="far fa-file-pdf" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="ledger-export" aria-label="Export to Excel">
+                <i class="far fa-file-excel" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="ledger-print-pattern">
+              <label for="ledger-print-pattern">Print Pattern:</label>
+              <select id="ledger-print-pattern">
+                <option>Ledger Pattern-</option>
+              </select>
+            </div>
+            <div class="ledger-count">
+              Entries Count <strong id="customerLedgerEntryCount">0</strong>
+            </div>
+            <div class="ledger-totals">
+              <span>Total:</span>
+              <strong id="customerLedgerDebitTotal">0.00</strong>
+              <strong id="customerLedgerCreditTotal">0.00</strong>
+              <strong id="customerLedgerBalanceTotal">0.00</strong>
+              <i aria-hidden="true"></i>
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

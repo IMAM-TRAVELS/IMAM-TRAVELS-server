@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar | Imam Travel and Tours</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="day_book.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="calendar.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button>Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content show">
+              <a href="Contact_Book_Inquiry.html">
+                <button class="sub-link">Contact Book</button>
+              </a>
+              <a href="query_inquiry.html">
+                <button class="sub-link">Query Inquiry</button>
+              </a>
+              <a href="temporary_booking.html">
+                <button class="sub-link">Temporary Booking</button>
+              </a>
+              <a href="ticket_booking.html">
+                <button class="sub-link">Ticket Booking</button>
+              </a>
+              <button class="sub-link">Ticket Inquiry</button>
+              <button class="sub-link">Service Inquiry</button>
+              <a href="ummrah.html">
+                <button class="sub-link">Ummrah Inquiry</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Customer Invoices Inquiry</button>
+              <button class="sub-link">Customer Allocate Inquiry</button>
+              <a href="customers.html">
+                <button class="sub-link">Customers</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Add And Manage Customer</button>
+              <button class="sub-link">Customer Branches</button>
+              <button class="sub-link">Call Type</button>
+              <button class="sub-link">Query Status</button>
+              <button class="sub-link">Query Source</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard calendar-dashboard">
+        <section class="calendar-app" aria-label="Calendar">
+          <div class="calendar-toolbar">
+            <div class="calendar-toolbar-main">
+              <button class="calendar-today" id="calendarToday" type="button">Today</button>
+              <div class="calendar-navigation" aria-label="Calendar navigation">
+                <button id="calendarPrevious" type="button" aria-label="Previous period">
+                  <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <button id="calendarNext" type="button" aria-label="Next period">
+                  <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+              <h1 id="calendarTitle" aria-live="polite"></h1>
+            </div>
+            <div class="calendar-toolbar-actions">
+              <label class="calendar-search">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input id="calendarSearch" type="search" placeholder="Search events" aria-label="Search events" />
+              </label>
+              <select id="calendarView" aria-label="Calendar view">
+                <option value="month">Month</option>
+                <option value="week">Week</option>
+                <option value="day">Day</option>
+                <option value="year">Year</option>
+              </select>
+              <button class="calendar-add" id="calendarAdd" type="button">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+                <span>Create event</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="calendar-view" id="calendarViewContainer" aria-live="polite"></div>
+          <p class="calendar-share-status" id="calendarShareStatus" role="status" hidden></p>
+          <div class="calendar-legend">
+            <label class="calendar-observance-toggle">
+              <input id="calendarShowObservances" type="checkbox" checked />
+              <span class="calendar-legend-dot" aria-hidden="true"></span>
+              <span>International observances</span>
+            </label>
+            <label class="calendar-observance-toggle">
+              <input id="calendarShowPakistanHolidays" type="checkbox" checked />
+              <span class="calendar-legend-dot pakistan" aria-hidden="true"></span>
+              <span>Pakistan national holidays</span>
+            </label>
+            <span class="calendar-legend-note">Islamic holiday dates are estimates; official dates depend on moon sighting.</span>
+          </div>
+          <p class="calendar-empty-search" id="calendarSearchEmpty" hidden>No matching events found.</p>
+        </section>
+
+        <dialog class="calendar-dialog" id="calendarDialog" aria-labelledby="calendarDialogTitle">
+          <form id="calendarEventForm">
+            <div class="calendar-dialog-header">
+              <h2 id="calendarDialogTitle">Create event</h2>
+              <button class="calendar-dialog-close" id="calendarDialogClose" type="button" aria-label="Close">
+                <i class="fas fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+            <label class="calendar-field">
+              <span>Event title</span>
+              <input id="calendarEventTitle" name="title" type="text" maxlength="100" required placeholder="Add a title" />
+            </label>
+            <div class="calendar-event-dates">
+              <label class="calendar-field">
+                <span>Date</span>
+                <input id="calendarEventDate" name="date" type="date" required />
+              </label>
+              <label class="calendar-field">
+                <span>Start time</span>
+                <input id="calendarEventTime" name="time" type="time" />
+              </label>
+            </div>
+            <label class="calendar-all-day">
+              <input id="calendarEventAllDay" name="allDay" type="checkbox" />
+              <span>All day</span>
+            </label>
+            <label class="calendar-field">
+              <span>Event type</span>
+              <select id="calendarEventCategory" name="category">
+                <option value="work">Work</option>
+                <option value="travel">Travel</option>
+                <option value="ticket">Make / Issue Ticket</option>
+                <option value="ticket-refund">Ticket Refund</option>
+                <option value="vendor-payment">Pay to Vendor</option>
+                <option value="recovery">Recovery / Payment Collection</option>
+                <option value="flight">Flight Departure</option>
+                <option value="visa">Visa Processing / Expiry</option>
+                <option value="hotel">Hotel Booking / Check-in</option>
+                <option value="umrah">Umrah / Hajj</option>
+                <option value="client-meeting">Client Meeting</option>
+                <option value="document-expiry">Passport / Document Expiry</option>
+                <option value="follow-up">Customer Follow-up</option>
+                <option value="personal">Personal</option>
+                <option value="reminder">Reminder</option>
+              </select>
+            </label>
+            <label class="calendar-field calendar-color-field">
+              <span>Event color</span>
+              <span class="calendar-color-control">
+                <input id="calendarEventColor" name="color" type="color" value="#f4c542" aria-label="Choose event color" />
+                <span>Choose a color (default: yellow)</span>
+              </span>
+            </label>
+            <label class="calendar-field">
+              <span>Description</span>
+              <textarea id="calendarEventDescription" name="description" rows="3" maxlength="500" placeholder="Add notes"></textarea>
+            </label>
+            <fieldset class="calendar-reminder-field">
+              <legend>Reminders</legend>
+              <label class="calendar-reminder-option">
+                <input id="calendarReminderAtEvent" type="checkbox" checked />
+                <span>Notify at event date and time</span>
+              </label>
+              <label class="calendar-reminder-option">
+                <input id="calendarReminderDayBefore" type="checkbox" />
+                <span>Also notify 1 day before</span>
+              </label>
+              <label class="calendar-reminder-option">
+                <input id="calendarReminderRepeat" type="checkbox" />
+                <span>Repeat reminders</span>
+              </label>
+              <div class="calendar-repeat-settings" id="calendarRepeatSettings">
+                <span>Repeat every</span>
+                <input id="calendarReminderInterval" type="number" min="1" max="365" value="30" aria-label="Reminder repeat interval" />
+                <select id="calendarReminderUnit" aria-label="Reminder repeat interval unit">
+                  <option value="minutes">minutes</option>
+                  <option value="hours" selected>hours</option>
+                  <option value="days">days</option>
+                </select>
+                <span>for</span>
+                <input id="calendarReminderCount" type="number" min="1" max="20" value="2" aria-label="Number of repeated reminders" />
+                <span>more times</span>
+              </div>
+              <p class="calendar-share-help">For all-day events, the reminder time is 9:00 AM. Repeat count means extra reminders after each selected reminder.</p>
+            </fieldset>
+            <fieldset class="calendar-share-field">
+              <legend>Show this event to users</legend>
+              <p class="calendar-share-help">Only you and selected users can see this event.</p>
+              <div class="calendar-user-options" id="calendarUserOptions" aria-live="polite">
+                <span class="calendar-user-loading">Loading users...</span>
+              </div>
+            </fieldset>
+            <p class="calendar-form-error" id="calendarFormError" role="alert" hidden></p>
+            <div class="calendar-dialog-actions">
+              <button class="calendar-delete" id="calendarDelete" type="button" hidden>Delete event</button>
+              <button class="calendar-cancel" id="calendarCancel" type="button">Cancel</button>
+              <button class="calendar-save" type="submit">Save</button>
+            </div>
+          </form>
+        </dialog>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div id="clock"></div>
+      <div class="badge">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="calendar.js"></script>
+  </body>
+</html>

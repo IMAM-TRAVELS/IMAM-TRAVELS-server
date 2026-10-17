@@ -1,0 +1,279 @@
+/* --- PROFESSIONAL RESPONSIVE DESIGN --- */
+
+/* 1. Mobile & Tablets (Large Screens ke liye optimization) */
+@media screen and (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr) !important; /* 4 ki bajaye 3 icons */
+        gap: 15px;
+    }
+}
+
+/* 2. Tablets (Medium Screens) */
+@media screen and (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Sidebar upar aur dashboard niche aa jayega */
+    }
+    
+    .sidebar {
+        width: 100% !important;
+        height: auto;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr) !important; /* Mobile par 2 icons */
+    }
+
+    .top-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-left, .nav-right {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .company-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* 3. Small Mobile Screens */
+@media screen and (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(1, 1fr) !important; /* Bilkul choti screen par 1 icon */
+    }
+
+    .company-name {
+        font-size: 18px;
+    }
+
+    .tab {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+}
+
+/* 4. Professional Touch: Image & Table fix */
+img, table {
+    max-width: 100%;
+    height: auto;
+}
+
+.table-container {
+    overflow-x: auto; /* Mobile par table scroll ho sake */
+}
+
+/* Header Link Styles */
+.header-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Underline khatam karne ke liye */
+    color: inherit; /* Text color wahi rakhega jo pehle tha */
+}
+
+.header-link:hover {
+    opacity: 0.8; /* Click karte waqt thoda sa effect dene ke liye */
+}
+
+.company-header {
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #2B99B9;
+}
+
+.company-logo {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1B7B9E;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+/* Top Nav */
+.top-nav { background: #2B99B9; color: white; display: flex; justify-content: space-between; padding: 5px 15px; font-size: 12px; }
+.nav-left button { background: transparent; border: 1px solid transparent; color: white; padding: 3px 10px; cursor: pointer; }
+.nav-left button:hover { border-color: white; }
+.nav-right span { margin-left: 15px; cursor: pointer; }
+.logout { color: #FFFF00; font-weight: bold; }
+
+.info-bar { background: #f1f1f1; font-size: 10px; padding: 2px 15px; color: #666; border-bottom: 1px solid #ddd; }
+
+/* Sidebar */
+.main-container { display: flex; height: calc(100vh - 65px); }
+.sidebar { width: 200px; background: #1B7B9E; color: white; padding: 10px 0; }
+.content {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+}
+.menu-head { width: 90%; margin: 0 auto 5px; display: block; background: #15617D; color: white; border: 1px solid #1B7B9E; padding: 8px; text-align: left; font-size: 12px; cursor: pointer; }
+.menu-head.active { background: #00AEEF; font-weight: bold; }
+
+.menu-content { display: none; background: #1B7B9E; margin-bottom: 10px; }
+.menu-content.show { display: block; }
+.menu-content button { width: 100%; text-align: left; background: transparent; color: white; border: none; padding: 6px 20px; font-size: 11px; cursor: pointer; }
+.menu-content button:hover { background: #15617D; }
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: white;
+    padding-bottom: 80px;
+}
+
+.form-container {
+    padding: 10px;
+}
+
+/* Two Column Layout */
+.sections-wrapper {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+
+.form-section {
+    flex: 1;
+    border: 1px solid #7d96a5;
+    border-radius: 3px;
+}
+
+/* Grey Header like the image */
+.section-header {
+    background-color: #7d96a5;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.section-body {
+    padding: 10px;
+}
+
+/* Row & Field Alignment */
+.row {
+    display: flex;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.field {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.field label {
+    width: 120px;
+    font-size: 11px;
+    color: #333;
+}
+
+/* Labels with (+) are blue in image */
+.blue-label {
+    color: #0055ff !important;
+    font-weight: bold;
+}
+
+.field input, .field select, .field textarea {
+    flex: 1;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    font-size: 12px;
+}
+
+.readonly-field {
+    background-color: #f9f9f9;
+    border: none !important;
+    font-weight: bold;
+}
+
+/* Footer & Buttons */
+.action-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link {
+    display: block;
+    color: #008eb3;
+    font-size: 11px;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-add {
+    background-color: #31b0d5;
+    color: white;
+    border: 1px solid #269abc;
+    padding: 6px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-back {
+    background-color: #00a8d4;
+    color: white;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Bottom Stats Bar */
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #e3edf4;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+}
+
+.time-stamp {
+    font-size: 11px;
+    text-align: left;
+    position: absolute;
+    left: 10px;
+}
+
+.theme-info {
+    background-color: #31b0d5;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 12px;
+    font-size: 11px;
+}

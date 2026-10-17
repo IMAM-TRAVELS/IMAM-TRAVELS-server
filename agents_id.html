@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Users - Imam Travel and Tours</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="user.css" />
+    <link rel="stylesheet" href="agents_id.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo" />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button>Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button class="active">User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('agentUsersMenu')">
+              User Management <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="agentUsersMenu" class="menu-content show">
+              <a href="user_accounts.html"><button class="sub-link">All Users</button></a>
+              <button class="sub-link active-page" aria-current="page">Agent Users</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard agent-users-page">
+        <a class="back-link" href="user_accounts.html">&larr; Back to User Management</a>
+        <header class="page-header">
+          <div>
+            <h1>Agent Users</h1>
+            <p id="agentDetails">Loading agent details...</p>
+          </div>
+        </header>
+        <p id="agentUsersStatus" class="status" role="status" aria-live="polite">
+          Loading users...
+        </p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Company ID</th>
+                <th>User Type</th>
+                <th>Salary</th>
+                <th>System Role</th>
+              </tr>
+            </thead>
+            <tbody id="agentUsersBody"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

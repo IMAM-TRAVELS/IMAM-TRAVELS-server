@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day Book</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="day_book.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="icon"
+      class="logo-circle"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo" />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button>Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head active" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content show">
+              <a class="sub-link" href="cash_received.html">Cash Receipt Voucher Note</a>
+              <a class="sub-link" href="cash_payment.html">Cash Payment Voucher Note</a>
+              <a class="sub-link" href="bank_received.html">Bank Receipt Voucher</a>
+              <a class="sub-link" href="bank_payment.html">Bank Payments Voucher</a>
+              <a class="sub-link" href="bank_transfer.html">Bank to Bank Transfer</a>
+              <button class="sub-link">Journal Entry</button>
+              <button class="sub-link">Reconcile Bank Account</button>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Journal Inquiry</button>
+              <button class="sub-link">GL Inquiry</button>
+              <button class="sub-link">Bank Account Inquiry</button>
+              <button class="sub-link">Trial Balance</button>
+              <button class="sub-link">Balance Sheet drilldown</button>
+              <button class="sub-link">Profit and Loss Drilldown</button>
+              <button class="sub-link">Banking Reports</button>
+              <button class="sub-link">General Ledger Reports</button>
+            </div>
+          </div>
+
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Bank Account</button>
+              <button class="sub-link">GL Accounts</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard">
+        <div class="daybook-panel">
+          <div class="daybook-topbar">
+            <div class="date-field">
+              <label>From</label>
+              <input id="dayBookDate" type="date" />
+            </div>
+            <button class="exit-btn" type="button">Exit</button>
+          </div>
+          <p id="dayBookStatus" class="daybook-status" role="status" hidden></p>
+
+          <div class="daybook-table-wrap">
+            <table class="daybook-table">
+              <thead>
+                <tr>
+                  <th>Tp</th>
+                  <th>No.</th>
+                  <th>Code</th>
+                  <th>Account Head</th>
+                  <th>Description</th>
+                  <th>Receipts</th>
+                  <th>Payments</th>
+                </tr>
+              </thead>
+              <tbody id="dayBookEntries"></tbody>
+            </table>
+          </div>
+
+          <div class="grand-total-row">
+            <span>G. Total:</span>
+            <span class="amount" id="dayBookReceiptTotal">0.00</span>
+            <span class="amount" id="dayBookPaymentTotal">0.00</span>
+          </div>
+
+          <div class="bottom-report-panel">
+            <div class="export-actions">
+              <button class="pdf-btn" type="button">
+                <i class="fas fa-file-pdf"></i>
+                <span>PDF<br />Excel</span>
+              </button>
+              <button class="excel-btn" type="button">
+                <i class="fas fa-file-excel"></i>
+                <span>Generate</span>
+              </button>
+            </div>
+
+            <div class="summary-grid">
+              <div class="summary-box">
+                <div class="summary-title">Cash Opening</div>
+                <div class="summary-value" id="dayBookCashOpening">Loading...</div>
+              </div>
+              <div class="summary-box">
+                <div class="summary-title">Cash in hand</div>
+                <div class="summary-value" id="dayBookCashBalance">Loading...</div>
+              </div>
+              <div class="summary-box">
+                <div class="summary-title">Total Banks in Hand</div>
+                <div class="summary-value" id="dayBookBankBalance">Loading...</div>
+              </div>
+              <div class="summary-box">
+                <div class="summary-title">Total Banks + Cash</div>
+                <div class="summary-value red" id="dayBookTotalBalance">Loading...</div>
+              </div>
+              <div
+                class="bank-account-balances"
+                id="dayBookBankAccounts"
+                aria-label="Individual bank account balances"
+              ></div>
+            </div>
+
+            <div class="report-columns">
+              <div class="report-box">
+                <div class="mini-title">Profit Today</div>
+                <div class="mini-row"><span id="dayBookProfitToday">Loading...</span></div>
+              </div>
+              <div class="report-box">
+                <div class="mini-title">Exp. Today</div>
+                <div class="mini-row"><span id="dayBookExpenseToday">Loading...</span></div>
+              </div>
+              <div class="report-box">
+                <div class="mini-title" id="dayBookMonthProfitTitle">Profit Month-to-date</div>
+                <div class="mini-row"><span id="dayBookMonthProfit">Loading...</span></div>
+              </div>
+              <div class="report-box">
+                <div class="mini-title" id="dayBookMonthExpenseTitle">Expenses Month-to-date</div>
+                <div class="mini-row"><span id="dayBookMonthExpense">Loading...</span></div>
+              </div>
+              <div class="report-box">
+                <div class="mini-title" id="dayBookMonthNetTitle">Net P&amp;L Month-to-date</div>
+                <div class="mini-row"><span id="dayBookMonthNet">Loading...</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div id="clock">18/04/2026 | 17:01</div>
+      <div class="badge">2.4.3 - Theme: dashboard_blue - 1 user online</div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

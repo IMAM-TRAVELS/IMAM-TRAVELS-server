@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Document Detail</title>
+    <link rel="stylesheet" href="visa_details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
+ <script src="auth-guard.js"></script>
+</head>
+<body>
+
+    <header class="company-header">
+        <a href="ticket.html" class="header-link">
+            <img src="imam_travel_and_tours_logo.jpeg" alt="Logo" class="company-logo">
+            <span class="company-name">Imam Travel and Tours</span>
+        </a>
+    </header>
+
+    <nav class="top-nav">
+        <div class="nav-left">
+            <a href="ticket.html"><button>Ticket Service</button></a>
+            <a href="service.html"><button class="active">Visa Service</button></a>
+            <a href="accounts.html"><button>Accounts</button></a>
+            <a href="user.html"><button>User</button></a>
+        </div>
+        <div class="nav-right">
+            <span>Quick links <i class="fas fa-caret-down"></i></span>
+            <span>Configuration</span>
+            <span>Change password</span>
+            <span class="logout" onclick="logoutUser()" style="cursor:pointer;"><i class="fas fa-key"></i> Logout</span>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div id="ticketSidebar">
+                <div class="menu-group">
+                    <button class="menu-head active" onclick="toggleMenu('trans')">Transactions <i class="fas fa-caret-down"></i></button>
+                    <div id="trans" class="menu-content show">
+                        <a href="visa_details.html"><button class="sub-link">Visa Detail</button></a>
+                        <button class="sub-link">Add New Visa Information</button>
+                        <a href="add_new_visa_type.html"><button class="sub-link">Add New Visa Type</button></a>
+                        <a href="ummrah.html"><button class="sub-link">Umrah Packages Booking</button></a>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="inner-header">
+                <h3>Visa Document Detail Country Wise</h3>
+            </div>
+
+        <div class="content-section">
+            <nav class="visa-category-tabs" aria-label="Visa categories">
+                <button type="button" class="visa-category-tab active" aria-pressed="true" data-visa-category="FILE PROCESS">FILE PROCESS</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="WORK PERMIT">WORK PERMIT</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="DONE BASE (VISIT)">DONE BASE (VISIT)</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="DONE BASE (WORK PERMIT)">DONE BASE (WORK PERMIT)</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="STUDY">STUDY</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="INVITATION">INVITATION</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="MEDICAL EXAMINATION">MEDICAL EXAMINATION</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="APPOINTMENT">APPOINTMENT</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="PROTECTOR">PROTECTOR</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="4 IN ONE WORLD TOUR">4 IN ONE WORLD TOUR</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="DATE CHANGE TKT">DATE CHANGE TKT</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="REFUND TKT">REFUND TKT</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="CANCEL TKT">CANCEL TKT</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="UMMRAH PACKAGE">UMMRAH PACKAGE</button>
+                <button type="button" class="visa-category-tab" aria-pressed="false" data-visa-category="UMMRAH VISA 3 MONTHS">UMMRAH VISA 3 MONTHS</button>
+            </nav>
+
+            <div class="card-body">
+                <table class="visa-table">
+                    <thead>
+                        <tr>
+                            <th class="visa-name-col">Visa Name</th>
+                            <th class="icon-col"></th> <th class="icon-col"></th> </tr>
+                    </thead>
+                    <tbody id="visaTableBody">
+                        </tbody>
+                </table>
+                <div class="footer-check">
+                    <input type="checkbox" id="showInactive"> Show also Inactive
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('uae-content')">
+                        <i class="fas fa-caret-right"></i> 235-United Arab Emirates
+                    </button>
+                    <div id="uae-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4 onclick="toggleAccordion('dubai-visit')">
+                                <i class="fas fa-caret-down"></i> DUBAI 1 MONTH VISIT - <span class="price">45,000</span>
+                            </h4>
+                            <ul id="dubai-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                    <p class="visa-category-empty" hidden>No visa entries are available for this category yet.</p>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('canada-content')">
+                        <i class="fas fa-caret-right"></i> 39-Canada
+                    </button>
+                    <div id="canada-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANADA VISIT - <span class="price">1,20,000</span></h4>
+                            <ul id="canada-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('hong-kong-content')">
+                        <i class="fas fa-caret-right"></i> 97-Hong Kong
+                    </button>
+                    <div id="hong-kong-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> HONG KONG VISIT - <span class="price">80,000</span></h4>
+                            <ul id="hong-kong-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('bahrain-content')">
+                        <i class="fas fa-caret-right"></i> 45-Bahrain
+                    </button>
+                    <div id="bahrain-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> BAHRAIN VISIT - <span class="price">50,000</span></h4>
+                            <ul id="bahrain-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('malaysia-content')">
+                        <i class="fas fa-caret-right"></i> 88-Malaysia
+                    </button>
+                    <div id="malaysia-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> MALAYSIA VISIT - <span class="price">60,000</span></h4>
+                            <ul id="malaysia-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('indonesia-content')">
+                        <i class="fas fa-caret-right"></i> 70-Indonesia
+                    </button>
+                    <div id="indonesia-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> INDONESIA VISIT - <span class="price">55,000</span></h4>
+                            <ul id="indonesia-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('vietnam-content')">
+                        <i class="fas fa-caret-right"></i> 80-Vietnam
+                    </button>
+                    <div id="vietnam-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> VIETNAM VISIT - <span class="price">65,000</span></h4>
+                            <ul id="vietnam-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('cambodia-content')">
+                        <i class="fas fa-caret-right"></i> 90-Cambodia
+                    </button>
+                    <div id="cambodia-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CAMBODIA VISIT - <span class="price">70,000</span></h4>
+                            <ul id="cambodia-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('ethiopia-content')"><i class="fas fa-caret-right"></i> 100-Thailand
+                    </button>
+                    <div id="ethiopia-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> ETHIOPIA VISIT - <span class="price">80,000</span></h4>
+                            <ul id="ethiopia-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('uganda-content')"><i class="fas fa-caret-right"></i> 110-Uganda</button>
+                    <div id="uganda-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> UGANDA VISIT - <span class="price">90,000</span></h4>
+                            <ul id="uganda-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('sri-lanka-content')"><i class="fas fa-caret-right"></i> 120-Sri Lanka</button>
+                    <div id="sri-lanka-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> SRI LANKA VISIT - <span class="price">75,000</span></h4>
+                            <ul id="sri-lanka-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('singapore-content')"><i class="fas fa-caret-right"></i> 130-Singapore</button>
+                    <div id="singapore-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> SINGAPORE VISIT - <span class="price">85,000</span></h4>
+                            <ul id="singapore-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('azerbaijan-content')"><i class="fas fa-caret-right"></i> 140-Azerbaijan</button>
+                    <div id="azerbaijan-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> AZERBAIJAN VISIT - <span class="price">95,000</span></h4>
+                            <ul id="azerbaijan-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('kenya-content')"><i class="fas fa-caret-right"></i> 150-Kenya</button>
+                    <div id="kenya-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> KENYA VISIT - <span class="price">105,000</span></h4>
+                            <ul id="kenya-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('benin-content')"><i class="fas fa-caret-right"></i> 150-Benin</button>
+                    <div id="benin-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> BENIN VISIT - <span class="price">100,000</span></h4>
+                            <ul id="benin-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('djibouti-content')"><i class="fas fa-caret-right"></i> 160-Djibouti</button>
+                    <div id="djibouti-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> DJIBOUTI VISIT - <span class="price">110,000</span></h4>
+                            <ul id="djibouti-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion('united-arab-emirates-content')"><i class="fas fa-caret-right"></i> 170-United Arab Emirates</button>
+                    <div id="united-arab-emirates-content" class="accordion-content">
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> UNITED ARAB EMIRATES VISIT - <span class="price">120,000</span></h4>
+                            <ul id="united-arab-emirates-visit" class="doc-list">
+                                <li>1 - PASSPORT FIRST PAGE (SCAN)</li>
+                                <li>2 - PASSPORT SECOND PAGE (SCAN)</li>
+                                <li>3 - ID CARD FRONT SIDE (SCAN)</li>
+                                <li>4 - ID CARD BACK SIDE (SCAN)</li>
+                                <li>5 - 1 PICTURE (SCAN)</li>
+                                <li>6 - MOTHER NAME</li>
+                            </ul>
+                        </div>
+                        <div class="visa-type">
+                            <h4><i class="fas fa-caret-right"></i> CANCEL TKT - <span class="price">0</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    
+    <script type="module" src="script.js"></script>
+</body>
+</html>

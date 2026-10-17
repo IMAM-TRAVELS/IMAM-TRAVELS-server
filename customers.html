@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accounts Reports</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="ticket.css" />
+    <link rel="stylesheet" href="customers.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="imam_travel_and_tours_logo.jpeg"
+    />
+    <script src="auth-guard.js"></script>
+  </head>
+  <body>
+    <header class="company-header">
+      <a href="ticket.html" class="header-link">
+        <img
+          src="imam_travel_and_tours_logo.jpeg"
+          alt="Logo"
+          class="company-logo"
+        />
+        <span class="company-name">Imam Travel and Tours</span>
+      </a>
+    </header>
+
+    <nav class="top-nav">
+      <div class="nav-left">
+        <a href="ticket.html"><button>Ticket Service</button></a>
+        <a href="service.html"><button>Visa Service</button></a>
+        <a href="accounts.html"><button>Accounts</button></a>
+        <a href="user.html"><button>User</button></a>
+      </div>
+      <div class="nav-right">
+        <span>Quick links <i class="fas fa-caret-down"></i></span>
+        <span>Configuration</span>
+        <span>Change password</span>
+        <span class="logout" onclick="logoutUser()" style="cursor: pointer">
+          <i class="fas fa-key"></i> Logout
+        </span>
+      </div>
+    </nav>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div id="ticketSidebar">
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('trans')">
+              Transactions <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="trans" class="menu-content">
+              <a href="Contact_Book_Inquiry.html">
+                <button class="sub-link">Contact Book</button>
+              </a>
+              <a href="query_inquiry.html">
+                <button class="sub-link">Query Inquiry</button>
+              </a>
+              <a href="temporary_booking.html">
+                <button class="sub-link">Temporary Booking</button>
+              </a>
+              <a href="ticket_booking.html">
+                <button class="sub-link">Ticket Booking</button>
+              </a>
+              <button class="sub-link">Ticket Inquiry</button>
+              <button class="sub-link">Service Inquiry</button>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('inq')">
+              Inquiries and Reports <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="inq" class="menu-content">
+              <button class="sub-link">Customer Invoices Inquiry</button>
+              <button class="sub-link">Customer Allocate Inquiry</button>
+              <a href="customers.html">
+                <button class="sub-link">Customers</button>
+              </a>
+            </div>
+          </div>
+          <div class="menu-group">
+            <button class="menu-head" onclick="toggleMenu('maint')">
+              Maintenance <i class="fas fa-caret-down"></i>
+            </button>
+            <div id="maint" class="menu-content">
+              <button class="sub-link">Add And Manage Customer</button>
+              <button class="sub-link">Customer Branches</button>
+              <button class="sub-link">Call Type</button>
+              <button class="sub-link">Query Status</button>
+              <button class="sub-link">Query Source</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="dashboard customers-content">
+        <section class="ledger-screen" aria-label="Account list">
+          <div class="ledger-toolbar">
+            <div class="ledger-toolbar-actions">
+              <button type="button" class="ledger-tab active">Complete Ledger</button>
+              <button type="button" class="ledger-tab">Only Pending Invoices</button>
+              <button type="button" class="ledger-tab ledger-printer">
+                <i class="fas fa-cog" aria-hidden="true"></i> Printer Setup
+              </button>
+            </div>
+            <div class="ledger-toolbar-links">
+              <span class="ledger-date">06/10/2026</span>
+              <a href="#" onclick="return false;">Client Outstanding</a>
+              <button type="button" class="ledger-exit">Exit</button>
+            </div>
+          </div>
+
+          <div class="ledger-filters">
+            <div class="ledger-account-row">
+              <label class="ledger-field ledger-code">
+                <span>Acc. Code</span>
+                <input
+                  id="customerCodeFilter"
+                  type="text"
+                  value="0"
+                  aria-label="Account code or contact number"
+                />
+              </label>
+              <label class="ledger-field ledger-account">
+                <span>Account Head</span>
+                <span class="ledger-input-with-button">
+                  <input
+                    id="customerNameFilter"
+                    type="text"
+                    aria-label="Account head or account name"
+                  />
+                  <button
+                    id="customerSearchButton"
+                    type="button"
+                    aria-label="Find account"
+                  >
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </button>
+                </span>
+              </label>
+              <label class="ledger-field ledger-date-field">
+                <span>From Date</span>
+                <input type="text" value="01/04/2017" aria-label="From date" />
+              </label>
+              <label class="ledger-field ledger-date-field">
+                <span>To Date</span>
+                <input type="text" value="06/10/2026" aria-label="To date" />
+              </label>
+              <div class="ledger-options">
+                <label><input type="checkbox" /> Show with Posting Date</label>
+                <label><input type="checkbox" checked /> Net Commission after Discount</label>
+              </div>
+              <label class="ledger-field ledger-segregation">
+                <span>Data Segregation</span>
+                <select aria-label="Data segregation">
+                  <option>0</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="ledger-search-row">
+              <label class="ledger-field ledger-type">
+                <span>V.Type</span>
+                <select aria-label="Voucher type">
+                  <option></option>
+                </select>
+              </label>
+              <label class="ledger-field ledger-ticket-search">
+                <span><input type="checkbox" /> Tkt Search anywhere</span>
+                <input type="text" aria-label="Ticket search" />
+              </label>
+              <label class="ledger-field">
+                <span>PNR</span>
+                <input type="text" aria-label="PNR" />
+              </label>
+              <label class="ledger-field">
+                <span>Passport No.</span>
+                <input
+                  id="customerPassportFilter"
+                  type="text"
+                  aria-label="Passport number"
+                />
+              </label>
+              <label class="ledger-field ledger-invoice">
+                <span>Inv or V.No.</span>
+                <input type="text" aria-label="Invoice or voucher number" />
+              </label>
+              <label class="ledger-field ledger-description-search">
+                <span><input type="checkbox" checked /> Description Find anywhere</span>
+                <input type="text" aria-label="Description search" />
+              </label>
+              <label class="ledger-field ledger-amount">
+                <span>Amount</span>
+                <input type="text" value="0" aria-label="Amount" />
+              </label>
+            </div>
+          </div>
+
+          <div
+            id="customerListTableWrap"
+            class="ledger-table-wrap customer-list-table-wrap"
+          >
+            <table class="account-list-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Title of Account</th>
+                  <th>City</th>
+                  <th>Class</th>
+                  <th>Dr/Cr</th>
+                  <th>Op.Balance</th>
+                </tr>
+              </thead>
+              <tbody id="customerContacts">
+                <tr><td colspan="6">Loading accounts...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <footer class="ledger-footer">
+            <div class="ledger-footer-actions">
+              <button id="customerGenerateButton" type="button"><i class="fas fa-file-alt" aria-hidden="true"></i><span>Generate</span></button>
+              <button id="customerRefreshButton" type="button"><i class="fas fa-sync-alt" aria-hidden="true"></i><span>Refresh</span></button>
+              <button type="button"><i class="fas fa-calendar-alt" aria-hidden="true"></i><span>Change Date</span></button>
+              <button type="button" class="ledger-export" aria-label="Export to PDF">
+                <i class="far fa-file-pdf" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="ledger-export" aria-label="Export to Excel">
+                <i class="far fa-file-excel" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="ledger-print-pattern">
+              <label for="ledger-print-pattern">Print Pattern:</label>
+              <select id="ledger-print-pattern">
+                <option>Ledger Pattern-</option>
+              </select>
+            </div>
+            <div class="ledger-count">
+              Entries Count <strong id="customerLedgerEntryCount">0</strong>
+            </div>
+            <div class="ledger-totals">
+              <span>Total:</span>
+              <strong id="customerLedgerDebitTotal">0.00</strong>
+              <strong id="customerLedgerCreditTotal">0.00</strong>
+              <strong id="customerLedgerBalanceTotal">0.00</strong>
+              <i aria-hidden="true"></i>
+            </div>
+          </footer>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
